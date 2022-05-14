@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/light.png" type="Texture" id=1]
+[ext_resource path="res://src/Objects/Brazier.gd" type="Script" id=2]
+[ext_resource path="res://assets/tile_size.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 49.0648, 49.1911 )
+
+[node name="Brazier" type="Area2D"]
+collision_layer = 0
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 3 )
+
+[node name="BrazierLight" type="Light2D" parent="."]
+texture = ExtResource( 1 )
+color = Color( 1, 0.690196, 0.458824, 1 )
+shadow_enabled = true
+shadow_gradient_length = 3.0
+shadow_filter = 2
+shadow_filter_smooth = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

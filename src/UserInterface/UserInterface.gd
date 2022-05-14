@@ -2,8 +2,8 @@ extends Control
 
 onready var scene_tree: = get_tree()
 onready var time: Label = get_node("Timer")
-onready var best_time: Label = get_node("BestTime")
-onready var deaths: Label = get_node("Deaths")
+# onready var best_time: Label = get_node("BestTime")
+# onready var deaths: Label = get_node("Deaths")
 onready var pause_overlay: ColorRect = get_node("PauseOverlay")
 onready var pause_title: Label = get_node("PauseOverlay/Title")
 
@@ -23,9 +23,9 @@ func _ready() -> void:
 	update_interface()
 
 func update_interface() -> void:
-	time.text = "Time: %ss / %ss" % [("-" if PlayerData.time < 0 else PlayerData.time), GameInfo.total_time]
-	best_time.text = "Best Time: %ss" % ("-" if PlayerData.best_time < 0 else PlayerData.best_time)
-	deaths.text = "Deaths: %s" % PlayerData.deaths
+	time.text = "Time: %ss" % PlayerData.time
+	# best_time.text = "Best Time: %ss" % ("-" if PlayerData.best_time < 0 else PlayerData.best_time)
+	# deaths.text = "Deaths: %s" % PlayerData.deaths
 
 func _on_PlayerData_player_died() -> void:
 	self.paused = true

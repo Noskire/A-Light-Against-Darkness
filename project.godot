@@ -17,7 +17,6 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerData="*res://src/Autoload/PlayerData.tscn"
-GameInfo="*res://src/Autoload/GameInfo.tscn"
 
 [display]
 
