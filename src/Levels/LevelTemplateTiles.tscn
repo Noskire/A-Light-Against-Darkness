@@ -9,7 +9,7 @@
 [ext_resource path="res://src/Objects/Brazier.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Objects/Trap.tscn" type="PackedScene" id=8]
 
-[node name="LevelTemplateMaze" type="Node2D"]
+[node name="LevelTemplateTiles" type="Node2D"]
 __meta__ = {
 "_edit_horizontal_guides_": [ 2099.99 ],
 "_edit_vertical_guides_": [ 2100.04 ]

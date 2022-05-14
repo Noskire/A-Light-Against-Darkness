@@ -5,16 +5,16 @@ onready var act_timer: Timer = $ActivateTimer
 
 var touching = false
 var delay = false
-var player: Node2D
+var actor: Node2D
 
 func _on_body_entered(body):
-	player = body
+	actor = body
 	touching = true
 	if not delay:
 		delay = true
 		act_timer.start()
 
-func _on_body_exited(body):
+func _on_body_exited(_body):
 	touching = false
 
 func _on_ActivateTimer_timeout():
@@ -23,9 +23,8 @@ func _on_ActivateTimer_timeout():
 func _on_animation_finished(anim_name):
 	if anim_name == "Activate":
 		if touching:
-			# Player toma dano
-			player.take_damage()
-			print("Tomou dano!")
+			# Player/Enemy takes damage
+			actor.take_damage()
 			pass
 		anim_player.play("Desactivate")
 	if anim_name == "Desactivate":

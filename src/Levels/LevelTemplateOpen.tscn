@@ -6,7 +6,7 @@
 [ext_resource path="res://src/UserInterface/UserInterface.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Screens/EndScreen.tscn" type="PackedScene" id=5]
 
-[node name="LevelTemplate" type="Node2D"]
+[node name="LevelTemplateOpen" type="Node2D"]
 __meta__ = {
 "_edit_horizontal_guides_": [ 4099.6 ],
 "_edit_vertical_guides_": [ 6500.11 ]
