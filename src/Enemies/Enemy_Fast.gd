@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 onready var player: Node2D = get_parent().get_node("Player")
 
-export var impulse = Vector2(300.0, 300.0)
+export var move_velocity = Vector2(300.0, 300.0)
 
 var enemy_pos = Vector2()
 var target_pos = Vector2()
@@ -17,9 +17,9 @@ func _physics_process(_delta: float) -> void:
 	enemy_pos = get_global_position()
 	target_pos = player.position
 	direction = (target_pos - enemy_pos).normalized()
-	
+
 	look_at(target_pos)
-	velocity = direction * impulse
+	velocity = direction * move_velocity
 	velocity = move_and_slide(velocity)
 
 func take_damage() -> void:

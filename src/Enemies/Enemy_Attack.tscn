@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/enemy02.png" type="Texture" id=1]
+[ext_resource path="res://src/Enemies/Enemy_Attack.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 44.6754, 41.5894 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 45.6473
+
+[sub_resource type="Animation" id=3]
+resource_name = "Attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/AttackArea/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[node name="Enemy_Attack" type="KinematicBody2D"]
+scale = Vector2( 0.6, 0.6 )
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="AttackArea" type="Area2D" parent="Sprite"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/AttackArea"]
+position = Vector2( 62.7341, 0 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color( 0.368627, 0.870588, 0.247059, 1 )
+shape = SubResource( 2 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+position = Vector2( -18.9204, -15.5958 )
+scale = Vector2( 3.87719, 3.39358 )
+rect = Rect2( -20, -20, 50, 50 )
+process_parent = true
+physics_process_parent = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Attack = SubResource( 3 )
+
+[connection signal="body_entered" from="Sprite/AttackArea" to="." method="_on_AttackArea_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

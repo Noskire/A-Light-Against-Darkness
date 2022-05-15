@@ -1,18 +1,25 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/UserInterface/ChangeSceneButton.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/UserInterface/QuitButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=3]
 [ext_resource path="res://assets/background.png" type="Texture" id=4]
+[ext_resource path="res://src/Screens/Main Screen.gd" type="Script" id=5]
 
 [node name="Main Screen" type="Control"]
 pause_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
 theme = ExtResource( 3 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+next_scene_path = "res://src/Levels/Level01.tscn"
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -40,17 +47,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -316.0
-margin_top = -130.0
-margin_right = 316.0
-margin_bottom = 131.0
+margin_left = -300.0
+margin_top = 10.0
+margin_right = 300.0
+margin_bottom = 310.0
+custom_constants/separation = 25
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayButton" parent="Menu" instance=ExtResource( 1 )]
-next_scene_path = "res://src/Levels/LevelTemplateTiles.tscn"
+[node name="PlayButton" type="Button" parent="Menu"]
+margin_right = 600.0
+margin_bottom = 137.0
+focus_neighbour_top = NodePath("../QuitButton")
+size_flags_vertical = 3
+text = "Play Game"
+flat = true
 
-[node name="QuitButton" parent="Menu" instance=ExtResource( 2 )]
-margin_top = 132.0
-margin_bottom = 261.0
+[node name="QuitButton" type="Button" parent="Menu"]
+margin_top = 162.0
+margin_right = 600.0
+margin_bottom = 300.0
+focus_neighbour_bottom = NodePath("../PlayButton")
+size_flags_vertical = 3
+text = "Quit"
+flat = true
+
+[connection signal="button_up" from="Menu/PlayButton" to="." method="_on_PlayButton_button_up"]
+[connection signal="button_up" from="Menu/QuitButton" to="." method="_on_QuitButton_button_up"]

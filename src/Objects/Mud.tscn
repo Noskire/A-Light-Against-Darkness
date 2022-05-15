@@ -4,7 +4,7 @@
 [ext_resource path="res://src/Objects/Mud.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 49.4374, 49.5492 )
+extents = Vector2( 50.0078, 50.0078 )
 
 [node name="Mud" type="Area2D"]
 collision_layer = 0

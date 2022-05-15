@@ -20,6 +20,7 @@ func go_up() -> void:
 	
 	# Save time and pass on
 	PlayerData.time = int (player.current_time)
+	PlayerData.fire_strenght = player.fire_strenght
 	
 	var err
 	err = get_tree().change_scene_to(next_scene)

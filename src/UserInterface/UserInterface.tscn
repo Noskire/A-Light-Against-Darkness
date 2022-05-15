@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/UserInterface/UserInterface.gd" type="Script" id=1]
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=2]
-[ext_resource path="res://src/UserInterface/MainMenuButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/UserInterface/QuitButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/UserInterface/RetryButton.tscn" type="PackedScene" id=5]
 
 [node name="UserInterface" type="Control"]
 pause_mode = 2
@@ -16,6 +13,7 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 1649.73 ]
 }
+next_scene_path = "res://src/Screens/Main Screen.tscn"
 
 [node name="Timer" type="Label" parent="."]
 anchor_left = 1.0
@@ -76,28 +74,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PauseMenu" type="VBoxContainer" parent="PauseOverlay"]
+[node name="Menu" type="VBoxContainer" parent="PauseOverlay"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -343.5
-margin_top = -138.0
-margin_right = 343.5
-margin_bottom = 138.0
+margin_left = -300.0
+margin_top = -100.0
+margin_right = 300.0
+margin_bottom = 350.0
+custom_constants/separation = 25
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainMenuButton" parent="PauseOverlay/PauseMenu" instance=ExtResource( 3 )]
-margin_right = 687.0
-margin_bottom = 91.0
+[node name="MenuButton" type="Button" parent="PauseOverlay/Menu"]
+margin_right = 600.0
+margin_bottom = 133.0
+focus_neighbour_top = NodePath("../QuitButton")
+size_flags_vertical = 3
+text = "Main Menu"
+flat = true
 
-[node name="RetryButton" parent="PauseOverlay/PauseMenu" instance=ExtResource( 5 )]
-margin_top = 95.0
-margin_bottom = 180.0
+[node name="RetryButton" type="Button" parent="PauseOverlay/Menu"]
+margin_top = 158.0
+margin_right = 600.0
+margin_bottom = 291.0
+size_flags_vertical = 3
+text = "Retry"
+flat = true
 
-[node name="Quit" parent="PauseOverlay/PauseMenu" instance=ExtResource( 4 )]
-margin_top = 184.0
-margin_right = 687.0
-margin_bottom = 276.0
+[node name="QuitButton" type="Button" parent="PauseOverlay/Menu"]
+margin_top = 316.0
+margin_right = 600.0
+margin_bottom = 450.0
+focus_neighbour_bottom = NodePath("../MenuButton")
+size_flags_vertical = 3
+text = "Quit"
+flat = true
+
+[connection signal="button_up" from="PauseOverlay/Menu/MenuButton" to="." method="_on_MenuButton_button_up"]
+[connection signal="button_up" from="PauseOverlay/Menu/RetryButton" to="." method="_on_RetryButton_button_up"]
+[connection signal="button_up" from="PauseOverlay/Menu/QuitButton" to="." method="_on_QuitButton_button_up"]

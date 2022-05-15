@@ -90,6 +90,7 @@ tracks/1/keys = {
 }
 
 [node name="Trap" type="Area2D"]
+collision_layer = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -101,6 +102,7 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="ActivateTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
