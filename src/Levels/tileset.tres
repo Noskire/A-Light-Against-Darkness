@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=6 format=2]
+[gd_resource type="TileSet" load_steps=7 format=2]
 
 [ext_resource path="res://assets/tileset.png" type="Texture" id=1]
 
@@ -13,6 +13,9 @@ polygon = PoolVector2Array( 1.11111, 0.416656, 1.11111, 0.416656, 1.11111, 33.05
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 10.8719, 49.1435, 9.90739, 49.6258, 24.8572, 19.7261, 50.8989, 10.081, 79.834, 24.0663, 90.4436, 49.1435, 81.7631, 77.5964, 50.4166, 91.0995, 21.4815, 77.5964 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 100, 0, 100, 100, 0, 100 )
 
 [resource]
 0/name = "floor"
@@ -143,3 +146,24 @@ points = PoolVector2Array( 10.8719, 49.1435, 9.90739, 49.6258, 24.8572, 19.7261,
 7/shape_one_way_margin = 0.0
 7/shapes = [  ]
 7/z_index = 0
+8/name = "void"
+8/texture = ExtResource( 1 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 200, 200, 100, 100 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape = SubResource( 5 )
+8/shape_one_way = false
+8/shape_one_way_margin = 1.0
+8/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+8/z_index = 0

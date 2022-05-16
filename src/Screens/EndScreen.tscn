@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Screens/EndScreen.gd" type="Script" id=1]
-[ext_resource path="res://assets/background.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/background.png" type="Texture" id=3]
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=4]
 
 [node name="EndScreen" type="Control"]
@@ -85,7 +85,6 @@ margin_bottom = 137.0
 focus_neighbour_top = NodePath("../QuitButton")
 size_flags_vertical = 3
 text = "Play Again"
-flat = true
 
 [node name="QuitButton" type="Button" parent="Menu"]
 margin_top = 162.0
@@ -94,7 +93,6 @@ margin_bottom = 300.0
 focus_neighbour_bottom = NodePath("../MenuButton")
 size_flags_vertical = 3
 text = "Quit"
-flat = true
 
 [connection signal="button_up" from="Menu/MenuButton" to="." method="_on_MenuButton_button_up"]
 [connection signal="button_up" from="Menu/QuitButton" to="." method="_on_QuitButton_button_up"]

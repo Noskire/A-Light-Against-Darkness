@@ -1,13 +1,24 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/enemy03.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/enemy03.png" type="Texture" id=1]
 [ext_resource path="res://src/Enemies/Enemy_Shooter.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 45.6473
 
 [sub_resource type="Animation" id=2]
-resource_name = "Shoot"
+resource_name = "Attack"
+length = 0.5
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id=4]
+resource_name = "Prepare"
+length = 0.2
+
+[sub_resource type="Animation" id=5]
+resource_name = "Rest"
 length = 0.5
 
 [node name="Enemy_Shooter" type="KinematicBody2D"]
@@ -31,7 +42,11 @@ process_parent = true
 physics_process_parent = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Shoot = SubResource( 2 )
+autoplay = "Rest"
+anims/Attack = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/Prepare = SubResource( 4 )
+anims/Rest = SubResource( 5 )
 
 [node name="BulletSpawnPoint" type="Position2D" parent="."]
 position = Vector2( 60, 0 )

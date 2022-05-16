@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/enemy02.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/enemy02.png" type="Texture" id=1]
 [ext_resource path="res://src/Enemies/Enemy_Attack.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -24,6 +24,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ true, false, true ]
 }
+
+[sub_resource type="Animation" id=4]
+resource_name = "Idle"
+loop = true
+
+[sub_resource type="Animation" id=5]
+resource_name = "Prepare"
+length = 0.3
+
+[sub_resource type="Animation" id=6]
+resource_name = "Rest"
+length = 0.2
 
 [node name="Enemy_Attack" type="KinematicBody2D"]
 scale = Vector2( 0.6, 0.6 )
@@ -54,7 +66,11 @@ process_parent = true
 physics_process_parent = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
 anims/Attack = SubResource( 3 )
+anims/Idle = SubResource( 4 )
+anims/Prepare = SubResource( 5 )
+anims/Rest = SubResource( 6 )
 
 [connection signal="body_entered" from="Sprite/AttackArea" to="." method="_on_AttackArea_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

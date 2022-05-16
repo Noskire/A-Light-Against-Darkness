@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ameba.png-3d2c038382ff87631de5b2c2946f4e21.stex"
+path="res://.import/trap.png-b257add74b38531f59f1d3bd3c0f319a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ameba.png"
-dest_files=[ "res://.import/ameba.png-3d2c038382ff87631de5b2c2946f4e21.stex" ]
+source_file="res://assets/images/trap.png"
+dest_files=[ "res://.import/trap.png-b257add74b38531f59f1d3bd3c0f319a.stex" ]
 
 [params]
 

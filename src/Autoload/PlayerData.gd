@@ -2,6 +2,7 @@ extends Node
 
 signal time_updated
 signal player_died
+signal fire_updated
 
 var best_time = -1.0 setget set_best_time
 var time = 0.0 setget set_time

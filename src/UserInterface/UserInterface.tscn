@@ -27,32 +27,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BestTime" type="Label" parent="."]
-visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -270.026
-margin_top = 188.681
-margin_right = -63.0256
-margin_bottom = 267.681
-text = "Best Time: %s"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Deaths" type="Label" parent="."]
-visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -269.655
-margin_top = 273.341
-margin_right = -109.655
-margin_bottom = 352.341
-text = "Deaths: %s"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="PauseOverlay" type="ColorRect" parent="."]
 visible = false
 anchor_right = 1.0
@@ -94,7 +68,6 @@ margin_bottom = 133.0
 focus_neighbour_top = NodePath("../QuitButton")
 size_flags_vertical = 3
 text = "Main Menu"
-flat = true
 
 [node name="RetryButton" type="Button" parent="PauseOverlay/Menu"]
 margin_top = 158.0
@@ -102,7 +75,6 @@ margin_right = 600.0
 margin_bottom = 291.0
 size_flags_vertical = 3
 text = "Retry"
-flat = true
 
 [node name="QuitButton" type="Button" parent="PauseOverlay/Menu"]
 margin_top = 316.0
@@ -111,7 +83,6 @@ margin_bottom = 450.0
 focus_neighbour_bottom = NodePath("../MenuButton")
 size_flags_vertical = 3
 text = "Quit"
-flat = true
 
 [connection signal="button_up" from="PauseOverlay/Menu/MenuButton" to="." method="_on_MenuButton_button_up"]
 [connection signal="button_up" from="PauseOverlay/Menu/RetryButton" to="." method="_on_RetryButton_button_up"]

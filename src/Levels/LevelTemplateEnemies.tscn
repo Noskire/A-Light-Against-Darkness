@@ -43,7 +43,10 @@ limit_bottom = 2100
 [node name="Objects" type="Node" parent="."]
 
 [node name="Brazier2" parent="Objects" instance=ExtResource( 7 )]
-position = Vector2( 1049.98, 250.58 )
+position = Vector2( 304.946, 496.122 )
+
+[node name="Brazier3" parent="Objects" instance=ExtResource( 7 )]
+position = Vector2( 1049.98, 253.944 )
 
 [node name="Mud" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 650, 250 )
@@ -60,15 +63,15 @@ next_scene = ExtResource( 3 )
 color = Color( 0.478363, 0.602989, 0.644531, 1 )
 
 [node name="Enemy_Charge" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1132.31, 1048.33 )
+position = Vector2( 967.494, 940.696 )
 
 [node name="Enemy_Attack" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1012.06, 1043.35 )
+position = Vector2( 1395.51, 632.993 )
 
 [node name="Enemy_Shooter" parent="." instance=ExtResource( 12 )]
-position = Vector2( 508.16, 545.228 )
+position = Vector2( 1386.06, 772.27 )
 
 [node name="Enemy_Fast" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1132, 936.472 )
+position = Vector2( 1392.68, 933.109 )
 
 [editable path="Player"]

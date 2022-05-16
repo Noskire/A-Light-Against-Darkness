@@ -1,34 +1,22 @@
 extends Area2D
 
 onready var anim_player: AnimationPlayer = $AnimationPlayer
-onready var act_timer: Timer = $ActivateTimer
 
-var touching = false
-var delay = false
-var actor: Node2D
+var state = "Rest"
 
 func _on_body_entered(body):
-	actor = body
-	touching = true
-	if not delay:
-		delay = true
-		act_timer.start()
-
-func _on_body_exited(_body):
-	touching = false
-
-func _on_ActivateTimer_timeout():
-	anim_player.play("Activate")
+	if state == "Rest": # Playing Idle
+		anim_player.play("Prepare")
+	else:
+		body.take_damage()
 
 func _on_animation_finished(anim_name):
-	if anim_name == "Activate":
-		if touching:
-			# Player/Enemy takes damage
-			actor.take_damage()
-			pass
-		anim_player.play("Desactivate")
-	if anim_name == "Desactivate":
-		if touching:
-			act_timer.start()
-		else:
-			delay = false
+	state = anim_name
+	if anim_name == "Idle":
+		anim_player.play("Prepare")
+	elif anim_name == "Prepare":
+		anim_player.play("Attack")
+	elif anim_name == "Attack":
+		anim_player.play("Rest")
+	elif anim_name == "Rest":
+		anim_player.play("Idle")

@@ -2,7 +2,6 @@ tool
 extends Control
 
 onready var time: Label = get_node("Timer")
-# onready var best_time: Label = get_node("BestTime")
 onready var deaths: Label = get_node("Deaths")
 
 export(String, FILE) var next_scene_path: = ""
