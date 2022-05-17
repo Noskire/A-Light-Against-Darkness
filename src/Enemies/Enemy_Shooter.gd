@@ -15,7 +15,14 @@ func _physics_process(_delta: float) -> void:
 		enemy_pos = get_global_position()
 		if is_instance_valid(player):
 			target_pos = player.position - enemy_pos
-		if abs(target_pos.x) > 300 or abs(target_pos.y) > 300:
+		if abs(target_pos.x) > 500 or abs(target_pos.y) > 500:
+			# Move towards player
+			direction = target_pos.normalized()
+			if is_instance_valid(player):
+				look_at(player.position)
+			velocity = (direction * move_velocity)
+			velocity = move_and_slide(velocity)
+		elif abs(target_pos.x) > 300 or abs(target_pos.y) > 300:
 			state = PREPARE
 			anim_player.play("Prepare")
 		else:
@@ -24,6 +31,16 @@ func _physics_process(_delta: float) -> void:
 			look_at(enemy_pos + direction)
 			velocity = (direction * move_velocity).rotated(deg2rad(rand))
 			velocity = move_and_slide(velocity)
+	elif state == FLEEING:
+		velocity = move_and_slide(velocity)
+
+func take_damage() -> void:
+	state = FLEEING
+	anim_player.play("Fleeing")
+	# Move away from player
+	direction = target_pos.normalized() * (-1)
+	look_at(enemy_pos + direction)
+	velocity = (direction * move_velocity)
 
 func shoot() -> void:
 	var bullet = bullet_path.instance()
@@ -47,3 +64,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		state = IDLE
 		rand = rand_range(-amplitude, amplitude)
 		anim_player.play("Idle")
+	elif anim_name == "Fleeing":
+		queue_free()

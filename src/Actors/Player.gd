@@ -1,11 +1,10 @@
 extends KinematicBody2D
 
-onready var inv_timer: Timer = get_node("Invulnerability")
-onready var enemy_collision: CollisionShape2D = get_node("EnemyDetector/CollisionShape2D")
-onready var screen_shake = get_node("Camera2D/ScreenShake")
-onready var torch_light: Light2D = get_node("TorchBody/TorchLight")
 onready var ui_control: Control = get_parent().get_node("UserInterface/UserInterface")
-onready var enemy_detector: Area2D = $EnemyDetector
+onready var torch_light: Light2D = get_node("TorchLight")
+onready var screen_shake = get_node("Camera2D/ScreenShake")
+onready var enemy_collision: CollisionShape2D = get_node("EnemyDetector/CollisionShape2D")
+onready var inv_timer: Timer = get_node("Invulnerability")
 onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 # Torch Stats
@@ -43,6 +42,12 @@ func _physics_process(delta: float) -> void:
 	var direction = get_direction()
 	direction = move_and_slide(direction * move_speed)
 	look_at(get_global_mouse_position())
+	
+	if anim_player.current_animation != "Attack":
+		if direction == Vector2.ZERO:
+			anim_player.play("Idle")
+		else:
+			anim_player.play("Moving")
 	
 	# Update Clock
 	current_time += delta
@@ -93,7 +98,7 @@ func take_damage() -> void:
 
 func die() -> void:
 	PlayerData.deaths += 1
-	queue_free()
+	#queue_free()
 
 func _on_EnemyDetector_body_entered(_body):
 	enemy_collision.set_deferred("disabled", true)

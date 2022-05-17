@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/Levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://src/Enemies/Enemy_Fast.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Enemies/Enemy_Attack.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/Enemies/Enemy_Shooter.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/UserInterface/CanvasModulate.gd" type="Script" id=13]
 
 [node name="LevelTemplateEnemies" type="Node2D"]
 position = Vector2( 0, -1 )
@@ -36,7 +37,7 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 167.347, 549.947 )
 
-[node name="Camera2D" parent="Player" index="2"]
+[node name="Camera2D" parent="Player" index="5"]
 limit_right = 2100
 limit_bottom = 2100
 
@@ -59,19 +60,24 @@ position = Vector2( 253.329, 849.233 )
 position = Vector2( 1150.69, 549.187 )
 next_scene = ExtResource( 3 )
 
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy_Charge" parent="Enemies" instance=ExtResource( 9 )]
+position = Vector2( 1031.23, 896.754 )
+
+[node name="Enemy_Attack" parent="Enemies" instance=ExtResource( 11 )]
+position = Vector2( 1419.05, 684.129 )
+
+[node name="Enemy_Shooter" parent="Enemies" instance=ExtResource( 12 )]
+position = Vector2( 1419.7, 813.315 )
+
+[node name="Enemy_Fast" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 1425.58, 956.893 )
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.478363, 0.602989, 0.644531, 1 )
-
-[node name="Enemy_Charge" parent="." instance=ExtResource( 9 )]
-position = Vector2( 967.494, 940.696 )
-
-[node name="Enemy_Attack" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1395.51, 632.993 )
-
-[node name="Enemy_Shooter" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1386.06, 772.27 )
-
-[node name="Enemy_Fast" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1392.68, 933.109 )
+pause_mode = 2
+color = Color( 0.188235, 0.227451, 0.239216, 1 )
+script = ExtResource( 13 )
+weight = 1
 
 [editable path="Player"]

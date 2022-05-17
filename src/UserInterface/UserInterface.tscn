@@ -84,6 +84,11 @@ focus_neighbour_bottom = NodePath("../MenuButton")
 size_flags_vertical = 3
 text = "Quit"
 
+[node name="DiedTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [connection signal="button_up" from="PauseOverlay/Menu/MenuButton" to="." method="_on_MenuButton_button_up"]
 [connection signal="button_up" from="PauseOverlay/Menu/RetryButton" to="." method="_on_RetryButton_button_up"]
 [connection signal="button_up" from="PauseOverlay/Menu/QuitButton" to="." method="_on_QuitButton_button_up"]
+[connection signal="timeout" from="DiedTimer" to="." method="_on_DiedTimer_timeout"]

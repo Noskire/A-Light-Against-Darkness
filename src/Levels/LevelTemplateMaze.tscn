@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Levels/LevelTemplateOpen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/UserInterface/UserInterface.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/UserInterface/CanvasModulate.gd" type="Script" id=6]
 
 [node name="LevelTemplateMaze" type="Node2D"]
 __meta__ = {
@@ -28,7 +29,7 @@ tile_data = PoolIntArray( 65535, 1610612737, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1,
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 145.976, 156.591 )
 
-[node name="Camera2D" parent="Player" index="2"]
+[node name="Camera2D" parent="Player" index="5"]
 limit_right = 2100
 limit_bottom = 2100
 
@@ -39,7 +40,8 @@ position = Vector2( 1950.08, 2049.93 )
 next_scene = ExtResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
+pause_mode = 2
 color = Color( 0.188235, 0.227451, 0.239216, 1 )
+script = ExtResource( 6 )
 
 [editable path="Player"]

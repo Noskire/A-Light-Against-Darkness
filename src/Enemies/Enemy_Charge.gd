@@ -16,6 +16,16 @@ func _physics_process(_delta: float) -> void:
 	elif state == ATTACK:
 		velocity = target_pos.normalized() * move_velocity * 3
 		velocity = move_and_slide(velocity)
+	elif state == FLEEING:
+		velocity = move_and_slide(velocity)
+
+func take_damage() -> void:
+	state = FLEEING
+	anim_player.play("Fleeing")
+	# Move away from player
+	direction = target_pos.normalized() * (-1)
+	look_at(get_global_position() + direction)
+	velocity = (direction * move_velocity)
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Prepare":
@@ -27,3 +37,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	elif anim_name == "Rest":
 		state = IDLE
 		anim_player.play("Idle")
+	elif anim_name == "Fleeing":
+		queue_free()
