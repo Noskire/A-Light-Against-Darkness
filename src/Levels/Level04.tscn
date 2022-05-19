@@ -170,7 +170,6 @@ margin_bottom = 5686.51
 theme = ExtResource( 8 )
 text = "You find me!"
 align = 1
-script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -178,5 +177,6 @@ __meta__ = {
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 pause_mode = 2
 color = Color( 0.188235, 0.227451, 0.239216, 0.705882 )
+script = ExtResource( 14 )
 
 [editable path="Player"]

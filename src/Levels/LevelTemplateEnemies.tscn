@@ -63,13 +63,13 @@ next_scene = ExtResource( 3 )
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy_Charge" parent="Enemies" instance=ExtResource( 9 )]
-position = Vector2( 1031.23, 896.754 )
+position = Vector2( 1442.36, 522.999 )
 
 [node name="Enemy_Attack" parent="Enemies" instance=ExtResource( 11 )]
-position = Vector2( 1419.05, 684.129 )
+position = Vector2( 1452.42, 684.129 )
 
 [node name="Enemy_Shooter" parent="Enemies" instance=ExtResource( 12 )]
-position = Vector2( 1419.7, 813.315 )
+position = Vector2( 972.529, 976.166 )
 
 [node name="Enemy_Fast" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 1425.58, 956.893 )

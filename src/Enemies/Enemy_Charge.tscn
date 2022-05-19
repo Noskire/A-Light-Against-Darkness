@@ -46,7 +46,7 @@ tracks/2/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "Fleeing"
 length = 0.8
 tracks/0/type = "value"
@@ -98,8 +98,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Idle"
+[sub_resource type="Animation" id=4]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -115,8 +114,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 3, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Prepare"
+[sub_resource type="Animation" id=5]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
@@ -143,8 +141,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.9, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Rest"
+[sub_resource type="Animation" id=6]
 length = 0.5
 
 [node name="Enemy_Charge" type="KinematicBody2D"]
@@ -155,6 +152,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 vframes = 5
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 0.368627, 0.870588, 0.247059, 1 )
@@ -170,9 +168,9 @@ physics_process_parent = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
 anims/Attack = SubResource( 2 )
-anims/Fleeing = SubResource( 6 )
-anims/Idle = SubResource( 3 )
-anims/Prepare = SubResource( 4 )
-anims/Rest = SubResource( 5 )
+anims/Fleeing = SubResource( 3 )
+anims/Idle = SubResource( 4 )
+anims/Prepare = SubResource( 5 )
+anims/Rest = SubResource( 6 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

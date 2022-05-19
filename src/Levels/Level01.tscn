@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/Levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=8]
 [ext_resource path="res://assets/images/light.png" type="Texture" id=9]
 [ext_resource path="res://src/UserInterface/CanvasModulate.gd" type="Script" id=10]
+[ext_resource path="res://assets/sounds/Water_Splash.wav" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "TheFall"
@@ -38,6 +39,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 10, 10 ), Vector2( 1, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("WaterSplashSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [node name="Level01" type="Node2D"]
 __meta__ = {
@@ -60,7 +73,8 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 510.678, 592.045 )
-rotation = 6.28319
+rotation = -4.71239
+scale = Vector2( 8.875, 8.875 )
 z_index = 1
 
 [node name="Camera2D" parent="Player" index="5"]
@@ -87,10 +101,6 @@ texture = ExtResource( 9 )
 color = Color( 0.647059, 0.705882, 0.827451, 0.490196 )
 shadow_enabled = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "TheFall"
-anims/TheFall = SubResource( 1 )
-
 [node name="Hint 01" type="Label" parent="."]
 margin_left = 2112.04
 margin_top = 723.547
@@ -108,5 +118,12 @@ __meta__ = {
 pause_mode = 2
 color = Color( 0.188235, 0.227451, 0.239216, 1 )
 script = ExtResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "TheFall"
+anims/TheFall = SubResource( 1 )
+
+[node name="WaterSplashSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
 
 [editable path="Player"]
