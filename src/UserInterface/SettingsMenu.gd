@@ -21,6 +21,12 @@ onready var sfx_slide = $Bg/TabC/Audio/MarginC/Grid/HBox3/SfxVolSlider
 onready var mouse_sens_value = $Bg/TabC/Gameplay/MarginC/Grid/HBox/MouseSensValue
 onready var mouse_sens_slide = $Bg/TabC/Gameplay/MarginC/Grid/HBox/MouseSensSlider
 
+# Keybind Setting
+onready var keybind_grid = $Bg/TabC/Keybind/MarginC/Grid
+onready var button_script = load("res://src/UserInterface/KeyButton.gd")
+var buttons = {}
+var keybinds
+
 func _ready():
 	display_options_btn.select(1 if Save.game_data.fullscreen_on else 0)
 	GlobalSettings.toggle_fullscreen(Save.game_data.fullscreen_on)
@@ -33,6 +39,36 @@ func _ready():
 	sfx_slide.value = Save.game_data.sfx_vol
 	
 	mouse_sens_slide.value = Save.game_data.mouse_sens
+	
+	GlobalSettings.set_keybinds()
+	keybinds = Save.keybinds.duplicate()
+	for key in keybinds.keys():
+		var label = Label.new()
+		var button = Button.new()
+		
+		label.set_h_size_flags(Control.SIZE_EXPAND_FILL)
+		button.set_h_size_flags(Control.SIZE_EXPAND)
+		button.set_h_size_flags(Control.SIZE_SHRINK_END)
+		
+		label.text = key
+		
+		var button_value = keybinds[key]
+		if button_value != null:
+			button.text = OS.get_scancode_string(button_value)
+		else:
+			button.text = "Unassigned"
+		
+		button.set_script(button_script)
+		button.key = key
+		button.value = button_value
+		button.menu = self
+		button.toggle_mode = true
+		button.focus_mode = Control.FOCUS_NONE
+		
+		keybind_grid.add_child(label)
+		keybind_grid.add_child(button)
+		
+		buttons[key] = button
 
 func _on_DisplayOption_item_selected(index):
 	GlobalSettings.toggle_fullscreen(true if index == 1 else false)
@@ -63,7 +99,29 @@ func _on_MouseSensSlider_value_changed(value):
 	GlobalSettings.update_mouse_sens(value)
 	mouse_sens_value.text = str(value)
 
+func change_bind(key, value):
+	keybinds[key] = value
+	for k in keybinds.keys():
+		if k != key and value != null and keybinds[k] == value:
+			keybinds[k] = null
+			buttons[k].value = null
+			buttons[k].text = "Unassigned"
+
 func _on_TabC_tab_selected(tab):
-	if tab == 3:
+	if tab == 4:
 		tab_container.current_tab = 0
 		self.visible = false
+
+func _on_Reset_button_up():
+	keybinds = Save.standard_keybinds.duplicate()
+	Save.keybinds = Save.standard_keybinds.duplicate()
+	for k in keybinds.keys():
+		buttons[k].value = keybinds[k]
+		buttons[k].text = OS.get_scancode_string(keybinds[k])
+	GlobalSettings.set_keybinds()
+	GlobalSettings.write_config()
+
+func _on_Save_button_up():
+	Save.keybinds = keybinds.duplicate()
+	GlobalSettings.set_keybinds()
+	GlobalSettings.write_config()

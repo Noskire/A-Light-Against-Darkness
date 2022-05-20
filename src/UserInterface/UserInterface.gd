@@ -27,7 +27,7 @@ func update_interface(value: int) -> void:
 	time.text = "Time: %ss" % value
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause_game") and pause_title.text != DIED_MESSAGE:
+	if event.is_action_pressed("Pause") and pause_title.text != DIED_MESSAGE:
 		if pause_overlay.visible: # Paused
 			scene_tree.paused = false
 			pause_overlay.visible = false

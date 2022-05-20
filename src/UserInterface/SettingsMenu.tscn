@@ -11,7 +11,7 @@ anchor_bottom = 0.5
 margin_left = -480.0
 margin_top = -270.0
 margin_right = 480.0
-margin_bottom = 270.0
+margin_bottom = 470.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -22,6 +22,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.188235, 0.227451, 0.239216, 0.686275 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TabC" type="TabContainer" parent="Bg"]
 anchor_right = 1.0
@@ -55,7 +58,7 @@ __meta__ = {
 margin_left = 25.0
 margin_top = 25.0
 margin_right = 927.0
-margin_bottom = 427.0
+margin_bottom = 627.0
 custom_constants/vseparation = 20
 columns = 2
 
@@ -155,7 +158,7 @@ __meta__ = {
 margin_left = 25.0
 margin_top = 25.0
 margin_right = 927.0
-margin_bottom = 427.0
+margin_bottom = 627.0
 custom_constants/vseparation = 20
 columns = 2
 
@@ -271,7 +274,7 @@ __meta__ = {
 margin_left = 25.0
 margin_top = 25.0
 margin_right = 927.0
-margin_bottom = 427.0
+margin_bottom = 627.0
 columns = 2
 
 [node name="MouseSens" type="Label" parent="Bg/TabC/Gameplay/MarginC/Grid"]
@@ -305,7 +308,50 @@ max_value = 3.0
 step = 0.01
 value = 0.1
 
+[node name="Keybind" type="Tabs" parent="Bg/TabC"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 84.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="MarginC" type="MarginContainer" parent="Bg/TabC/Keybind"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 25
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="GridContainer" parent="Bg/TabC/Keybind/MarginC"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 927.0
+margin_bottom = 627.0
+columns = 2
+
+[node name="Reset" type="Button" parent="Bg/TabC/Keybind/MarginC/Grid"]
+margin_left = 90.0
+margin_right = 358.0
+margin_bottom = 72.0
+focus_mode = 0
+size_flags_horizontal = 6
+text = "Reset Settings"
+
+[node name="Save" type="Button" parent="Bg/TabC/Keybind/MarginC/Grid"]
+margin_left = 550.0
+margin_right = 805.0
+margin_bottom = 72.0
+focus_mode = 0
+size_flags_horizontal = 6
+text = "Save Settings"
+
 [node name="X" type="Tabs" parent="Bg/TabC"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -322,3 +368,5 @@ margin_bottom = -4.0
 [connection signal="value_changed" from="Bg/TabC/Audio/MarginC/Grid/HBox2/MusicVolSlider" to="." method="_on_MusicVolSlider_value_changed"]
 [connection signal="value_changed" from="Bg/TabC/Audio/MarginC/Grid/HBox3/SfxVolSlider" to="." method="_on_SfxVolSlider_value_changed"]
 [connection signal="value_changed" from="Bg/TabC/Gameplay/MarginC/Grid/HBox/MouseSensSlider" to="." method="_on_MouseSensSlider_value_changed"]
+[connection signal="button_up" from="Bg/TabC/Keybind/MarginC/Grid/Reset" to="." method="_on_Reset_button_up"]
+[connection signal="button_up" from="Bg/TabC/Keybind/MarginC/Grid/Save" to="." method="_on_Save_button_up"]
