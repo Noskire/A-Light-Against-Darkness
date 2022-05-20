@@ -1,0 +1,324 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/ui_theme_darker.tres" type="Theme" id=1]
+[ext_resource path="res://src/UserInterface/SettingsMenu.gd" type="Script" id=2]
+
+[node name="SettingsMenu" type="Popup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -480.0
+margin_top = -270.0
+margin_right = 480.0
+margin_bottom = 270.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.188235, 0.227451, 0.239216, 0.686275 )
+
+[node name="TabC" type="TabContainer" parent="Bg"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Video" type="Tabs" parent="Bg/TabC"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 84.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="MarginC" type="MarginContainer" parent="Bg/TabC/Video"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 25
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="GridContainer" parent="Bg/TabC/Video/MarginC"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 927.0
+margin_bottom = 427.0
+custom_constants/vseparation = 20
+columns = 2
+
+[node name="DisplayMode" type="Label" parent="Bg/TabC/Video/MarginC/Grid"]
+margin_top = 3.0
+margin_right = 240.0
+margin_bottom = 69.0
+text = "Display Mode"
+
+[node name="DisplayOption" type="OptionButton" parent="Bg/TabC/Video/MarginC/Grid"]
+margin_left = 652.0
+margin_right = 902.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 10
+text = "Windowed"
+align = 1
+items = [ "Windowed", null, false, 0, null, "Fullscreen", null, false, 1, null ]
+selected = 0
+
+[node name="VSync" type="Label" parent="Bg/TabC/Video/MarginC/Grid"]
+margin_top = 96.0
+margin_right = 240.0
+margin_bottom = 162.0
+text = "VSync"
+
+[node name="VSyncBtn" type="CheckButton" parent="Bg/TabC/Video/MarginC/Grid"]
+margin_left = 826.0
+margin_top = 92.0
+margin_right = 902.0
+margin_bottom = 166.0
+size_flags_horizontal = 10
+
+[node name="Bloom" type="Label" parent="Bg/TabC/Video/MarginC/Grid"]
+margin_top = 190.0
+margin_right = 240.0
+margin_bottom = 256.0
+text = "Bloom"
+
+[node name="BloomBtn" type="CheckButton" parent="Bg/TabC/Video/MarginC/Grid"]
+margin_left = 826.0
+margin_top = 186.0
+margin_right = 902.0
+margin_bottom = 260.0
+size_flags_horizontal = 10
+
+[node name="Brightness" type="Label" parent="Bg/TabC/Video/MarginC/Grid"]
+margin_top = 280.0
+margin_right = 240.0
+margin_bottom = 346.0
+text = "Brightness"
+
+[node name="HBox" type="HBoxContainer" parent="Bg/TabC/Video/MarginC/Grid"]
+margin_left = 423.0
+margin_top = 280.0
+margin_right = 902.0
+margin_bottom = 346.0
+size_flags_horizontal = 10
+
+[node name="BrightnessValue" type="Label" parent="Bg/TabC/Video/MarginC/Grid/HBox"]
+margin_right = 75.0
+margin_bottom = 66.0
+text = "Max"
+
+[node name="BrightnessSlider" type="HSlider" parent="Bg/TabC/Video/MarginC/Grid/HBox"]
+margin_left = 79.0
+margin_right = 479.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_horizontal = 10
+size_flags_vertical = 1
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="Audio" type="Tabs" parent="Bg/TabC"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 84.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="MarginC" type="MarginContainer" parent="Bg/TabC/Audio"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 25
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="GridContainer" parent="Bg/TabC/Audio/MarginC"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 927.0
+margin_bottom = 427.0
+custom_constants/vseparation = 20
+columns = 2
+
+[node name="MasterVol" type="Label" parent="Bg/TabC/Audio/MarginC/Grid"]
+margin_right = 265.0
+margin_bottom = 66.0
+text = "Master Volume"
+
+[node name="HBox1" type="HBoxContainer" parent="Bg/TabC/Audio/MarginC/Grid"]
+margin_left = 442.0
+margin_right = 902.0
+margin_bottom = 66.0
+size_flags_horizontal = 10
+
+[node name="MasterVolValue" type="Label" parent="Bg/TabC/Audio/MarginC/Grid/HBox1"]
+margin_right = 56.0
+margin_bottom = 66.0
+text = "-10"
+
+[node name="MasterVolSlider" type="HSlider" parent="Bg/TabC/Audio/MarginC/Grid/HBox1"]
+margin_left = 60.0
+margin_right = 460.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_horizontal = 10
+size_flags_vertical = 1
+min_value = -50.0
+max_value = 0.0
+value = -10.0
+
+[node name="MusicVol" type="Label" parent="Bg/TabC/Audio/MarginC/Grid"]
+margin_top = 86.0
+margin_right = 265.0
+margin_bottom = 152.0
+text = "Music Volume"
+
+[node name="HBox2" type="HBoxContainer" parent="Bg/TabC/Audio/MarginC/Grid"]
+margin_left = 442.0
+margin_top = 86.0
+margin_right = 902.0
+margin_bottom = 152.0
+size_flags_horizontal = 10
+
+[node name="MusicVolValue" type="Label" parent="Bg/TabC/Audio/MarginC/Grid/HBox2"]
+margin_right = 56.0
+margin_bottom = 66.0
+text = "-10"
+
+[node name="MusicVolSlider" type="HSlider" parent="Bg/TabC/Audio/MarginC/Grid/HBox2"]
+margin_left = 60.0
+margin_right = 460.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_horizontal = 10
+size_flags_vertical = 1
+min_value = -50.0
+max_value = 0.0
+value = -10.0
+
+[node name="SfxVol" type="Label" parent="Bg/TabC/Audio/MarginC/Grid"]
+margin_top = 172.0
+margin_right = 265.0
+margin_bottom = 238.0
+text = "Sfx  Volume"
+
+[node name="HBox3" type="HBoxContainer" parent="Bg/TabC/Audio/MarginC/Grid"]
+margin_left = 442.0
+margin_top = 172.0
+margin_right = 902.0
+margin_bottom = 238.0
+size_flags_horizontal = 10
+
+[node name="SfxVolValue" type="Label" parent="Bg/TabC/Audio/MarginC/Grid/HBox3"]
+margin_right = 56.0
+margin_bottom = 66.0
+text = "-10"
+
+[node name="SfxVolSlider" type="HSlider" parent="Bg/TabC/Audio/MarginC/Grid/HBox3"]
+margin_left = 60.0
+margin_right = 460.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_horizontal = 10
+size_flags_vertical = 1
+min_value = -50.0
+max_value = 0.0
+value = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gameplay" type="Tabs" parent="Bg/TabC"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 84.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="MarginC" type="MarginContainer" parent="Bg/TabC/Gameplay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 25
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="GridContainer" parent="Bg/TabC/Gameplay/MarginC"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 927.0
+margin_bottom = 427.0
+columns = 2
+
+[node name="MouseSens" type="Label" parent="Bg/TabC/Gameplay/MarginC/Grid"]
+margin_right = 307.0
+margin_bottom = 66.0
+text = "Mouse Sensibility"
+
+[node name="HBox" type="HBoxContainer" parent="Bg/TabC/Gameplay/MarginC/Grid"]
+margin_left = 449.0
+margin_right = 902.0
+margin_bottom = 66.0
+size_flags_horizontal = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MouseSensValue" type="Label" parent="Bg/TabC/Gameplay/MarginC/Grid/HBox"]
+margin_right = 49.0
+margin_bottom = 66.0
+text = "0.1"
+
+[node name="MouseSensSlider" type="HSlider" parent="Bg/TabC/Gameplay/MarginC/Grid/HBox"]
+margin_left = 53.0
+margin_right = 453.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_horizontal = 10
+size_flags_vertical = 1
+min_value = 0.05
+max_value = 3.0
+step = 0.01
+value = 0.1
+
+[node name="X" type="Tabs" parent="Bg/TabC"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 84.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[connection signal="tab_selected" from="Bg/TabC" to="." method="_on_TabC_tab_selected"]
+[connection signal="item_selected" from="Bg/TabC/Video/MarginC/Grid/DisplayOption" to="." method="_on_DisplayOption_item_selected"]
+[connection signal="toggled" from="Bg/TabC/Video/MarginC/Grid/VSyncBtn" to="." method="_on_VSyncBtn_toggled"]
+[connection signal="toggled" from="Bg/TabC/Video/MarginC/Grid/BloomBtn" to="." method="_on_BloomBtn_toggled"]
+[connection signal="value_changed" from="Bg/TabC/Video/MarginC/Grid/HBox/BrightnessSlider" to="." method="_on_BrightnessSlider_value_changed"]
+[connection signal="value_changed" from="Bg/TabC/Audio/MarginC/Grid/HBox1/MasterVolSlider" to="." method="_on_MasterVolSlider_value_changed"]
+[connection signal="value_changed" from="Bg/TabC/Audio/MarginC/Grid/HBox2/MusicVolSlider" to="." method="_on_MusicVolSlider_value_changed"]
+[connection signal="value_changed" from="Bg/TabC/Audio/MarginC/Grid/HBox3/SfxVolSlider" to="." method="_on_SfxVolSlider_value_changed"]
+[connection signal="value_changed" from="Bg/TabC/Gameplay/MarginC/Grid/HBox/MouseSensSlider" to="." method="_on_MouseSensSlider_value_changed"]

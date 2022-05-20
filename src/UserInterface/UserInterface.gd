@@ -7,6 +7,7 @@ onready var died_timer: Timer = get_node("DiedTimer")
 onready var time: Label = get_node("Timer")
 onready var pause_overlay: ColorRect = get_node("PauseOverlay")
 onready var pause_title: Label = get_node("PauseOverlay/Title")
+onready var settings_menu = $SettingsMenu
 
 export(String, FILE) var next_scene_path: = ""
 
@@ -38,6 +39,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		scene_tree.set_input_as_handled()
 
 func _on_PlayerData_player_died() -> void:
+	$PauseOverlay/Menu/ResumeButton.visible = false
 	pause_title.text = DIED_MESSAGE
 	scene_tree.paused = true
 	canvas.get_darker()
@@ -48,6 +50,20 @@ func _on_DiedTimer_timeout():
 	pause_overlay.color.a = 0
 	$PauseOverlay/Menu/MenuButton.grab_focus()
 
+func _on_ResumeButton_button_up():
+	scene_tree.paused = false
+	pause_overlay.visible = false
+
+func _on_RetryButton_button_up():
+	scene_tree.paused = false
+	var err
+	err = scene_tree.reload_current_scene()
+	if err != OK:
+		print("Error reload_scene RetryButton")
+
+func _on_SettingsButton_button_up():
+	settings_menu.popup_centered()
+
 func _on_MenuButton_button_up():
 	# "Retry" and then call MainScreen
 	PlayerData.time = -1.0
@@ -57,13 +73,6 @@ func _on_MenuButton_button_up():
 	err = scene_tree.change_scene(next_scene_path)
 	if err != OK:
 		print("Error change_scene MenuButton")
-
-func _on_RetryButton_button_up():
-	scene_tree.paused = false
-	var err
-	err = scene_tree.reload_current_scene()
-	if err != OK:
-		print("Error reload_scene RetryButton")
 
 func _on_QuitButton_button_up():
 	scene_tree.quit()

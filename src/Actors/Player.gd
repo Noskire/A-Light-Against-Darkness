@@ -1,11 +1,14 @@
 extends KinematicBody2D
 
 onready var ui_control: Control = get_parent().get_node("UserInterface/UserInterface")
-onready var torch_light: Light2D = get_node("TorchLight")
+onready var fire_sprite: Sprite = get_node("Fire")
+onready var torch_light: Light2D = get_node("Fire/Light")
 onready var screen_shake = get_node("Camera2D/ScreenShake")
 onready var enemy_collision: CollisionShape2D = get_node("EnemyDetector/CollisionShape2D")
 onready var inv_timer: Timer = get_node("Invulnerability")
 onready var anim_player: AnimationPlayer = $AnimationPlayer
+
+export var mouse_sensitivity = 0.1
 
 # Torch Stats
 const TORCH_COLOR = Color("#FFB075")
@@ -36,6 +39,8 @@ func _ready() -> void:
 	current_time = PlayerData.time
 	fire_strenght = PlayerData.fire_strenght
 	change_torch_strenght()
+	
+	GlobalSettings.connect("mouse_sens_updated", self, "_on_mouse_sens_updated")
 
 func _physics_process(delta: float) -> void:
 	# Aim and Move
@@ -81,6 +86,7 @@ func change_torch_strenght() -> void:
 	weight = fire_strenght / MAX_TORCH_STRENGHT
 	current_color = TORCH_COLOR.linear_interpolate(TORCH_UNLIT, (1 - weight))
 	torch_light.color = current_color
+	fire_sprite.modulate.a = weight
 
 func take_damage() -> void:
 	if inv_timer.is_stopped():
@@ -113,4 +119,7 @@ func _on_AttackArea_body_entered(body):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Attack":
 		anim_player.play("Idle")
+
+func _on_mouse_sens_updated(value):
+	mouse_sensitivity = value
 

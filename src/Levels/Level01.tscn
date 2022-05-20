@@ -118,6 +118,8 @@ __meta__ = {
 pause_mode = 2
 color = Color( 0.188235, 0.227451, 0.239216, 1 )
 script = ExtResource( 10 )
+initial_color = Color( 0.0784314, 0.133333, 0.25098, 1 )
+current_color = Color( 0.0784314, 0.133333, 0.25098, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "TheFall"
@@ -125,5 +127,6 @@ anims/TheFall = SubResource( 1 )
 
 [node name="WaterSplashSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+bus = "SFX"
 
 [editable path="Player"]

@@ -1,19 +1,38 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/images/light.png" type="Texture" id=1]
 [ext_resource path="res://src/Objects/Brazier.gd" type="Script" id=2]
-[ext_resource path="res://assets/tile_size.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/Fire.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 49.0648, 49.1911 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Burning"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
 
 [node name="Brazier" type="Area2D"]
 collision_layer = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 3 )
+hframes = 4
+vframes = 2
+frame = 7
 
 [node name="BrazierLight" type="Light2D" parent="."]
 texture = ExtResource( 1 )
@@ -25,5 +44,9 @@ shadow_filter_smooth = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Burning"
+anims/Burning = SubResource( 2 )
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
