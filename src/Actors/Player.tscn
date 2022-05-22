@@ -1,19 +1,21 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/images/Willow_Sprite_Torch.png" type="Texture" id=1]
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/light.png" type="Texture" id=3]
 [ext_resource path="res://src/Objects/ScreenShake.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/images/Fire.png" type="Texture" id=5]
+[ext_resource path="res://assets/sounds/p_footstep1.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/Fire_Sound.wav" type="AudioStream" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 44.2974
+radius = 36.5237
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 42.3557, 43.4922 )
+extents = Vector2( 30.5727, 43.4922 )
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 49.0211
+radius = 38.657
 
 [sub_resource type="Animation" id=4]
 resource_name = "Attack"
@@ -53,6 +55,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 35, -38 ), Vector2( 34, -38 ), Vector2( 43, -13 ), Vector2( 40, 10 ), Vector2( 43, -13 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SFX_Player:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -136,6 +150,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 35, -38 ), Vector2( 32, -38 ), Vector2( 29, -38 ), Vector2( 25, -38 ), Vector2( 29, -38 ), Vector2( 32, -38 ), Vector2( 35, -38 ), Vector2( 37, -38 ), Vector2( 37.3, -38 ), Vector2( 37.6, -38 ), Vector2( 37.3, -38 ), Vector2( 37, -38 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("SFX_Player:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 2
@@ -148,11 +174,13 @@ vframes = 2
 frame = 3
 
 [node name="Fire" type="Sprite" parent="."]
+modulate = Color( 2.5, 1.5, 1, 1 )
 position = Vector2( 35, -38 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 hframes = 4
 vframes = 2
+frame = 4
 
 [node name="Light" type="Light2D" parent="Fire"]
 scale = Vector2( 1.2, 1.2 )
@@ -163,8 +191,12 @@ shadow_gradient_length = 3.0
 shadow_filter = 2
 shadow_filter_smooth = 50.0
 
+[node name="FireSound" type="AudioStreamPlayer2D" parent="Fire"]
+stream = ExtResource( 7 )
+autoplay = true
+bus = "SFX"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 modulate = Color( 0.407843, 0.803922, 0.298039, 1 )
 shape = SubResource( 1 )
 
@@ -173,7 +205,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2( 71.6721, -11.0877 )
+position = Vector2( 57.183, -11.0877 )
 shape = SubResource( 2 )
 disabled = true
 
@@ -204,7 +236,14 @@ anims/Attack = SubResource( 4 )
 anims/Idle = SubResource( 5 )
 anims/Moving = SubResource( 6 )
 
+[node name="SFX_Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -5.0
+bus = "SFX"
+
+[connection signal="finished" from="Fire/FireSound" to="." method="_on_FireSound_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
 [connection signal="timeout" from="Invulnerability" to="." method="_on_Invulnerability_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="finished" from="SFX_Player" to="." method="_on_SFX_Player_finished"]

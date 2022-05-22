@@ -17,12 +17,6 @@ const DIED_MESSAGE:   = "You died!"
 func _get_configuration_warning() -> String:
 	return "The next scene path can't be empty" if next_scene_path == "" else ""
 
-func _ready() -> void:
-	var err
-	err = PlayerData.connect("player_died", self, "_on_PlayerData_player_died")
-	if err != OK:
-		print("Error PlayerData.connect player_died")
-
 func update_interface(value: int) -> void:
 	time.text = "Time: %ss" % value
 
@@ -35,10 +29,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			scene_tree.paused = true
 			pause_overlay.visible = true
-			$PauseOverlay/Menu/MenuButton.grab_focus()
+			$PauseOverlay/Menu/ResumeButton.grab_focus()
 		scene_tree.set_input_as_handled()
 
-func _on_PlayerData_player_died() -> void:
+func player_died() -> void:
 	$PauseOverlay/Menu/ResumeButton.visible = false
 	pause_title.text = DIED_MESSAGE
 	scene_tree.paused = true
@@ -65,8 +59,6 @@ func _on_SettingsButton_button_up():
 	settings_menu.popup_centered()
 
 func _on_MenuButton_button_up():
-	# "Retry" and then call MainScreen
-	PlayerData.time = -1.0
 	scene_tree.paused = false
 	
 	var err

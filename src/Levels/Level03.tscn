@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/Levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=2]
@@ -12,12 +12,17 @@
 [ext_resource path="res://src/Enemies/Enemy_Attack.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Enemies/Enemy_Charge.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/UserInterface/CanvasModulate.gd" type="Script" id=12]
+[ext_resource path="res://src/UserInterface/WorldEnvironment.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/dynamicfont_darker_hints.tres" type="DynamicFont" id=14]
+[ext_resource path="res://src/Enemies/Enemy_Shooter.tscn" type="PackedScene" id=15]
 
 [node name="Level03" type="Node2D"]
 __meta__ = {
 "_edit_horizontal_guides_": [ 5999.94 ],
 "_edit_vertical_guides_": [ 8000.06 ]
 }
+
+[node name="WorldEnvironment" parent="." instance=ExtResource( 13 )]
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 layer = 100
@@ -35,6 +40,7 @@ tile_data = PoolIntArray( 0, 8, 0, 1, 8, 0, 2, 8, 0, 3, 8, 0, 4, 8, 0, 5, 8, 0, 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 215.783, 1265.63 )
 z_index = 1
+current_scene_id = 3
 
 [node name="Camera2D" parent="Player" index="5"]
 limit_right = 8000
@@ -48,6 +54,7 @@ position = Vector2( 1450, 3850 )
 [node name="Portal" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 6750, 3350 )
 next_scene = ExtResource( 3 )
+current_scene_id = 3
 
 [node name="Mud" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 6650, 3100 )
@@ -59,7 +66,7 @@ scale = Vector2( 5, 4 )
 position = Vector2( 5389.26, 3037.24 )
 
 [node name="Enemy_Attack2" parent="Enemies" instance=ExtResource( 10 )]
-position = Vector2( 6757.68, 3700.07 )
+position = Vector2( 1277.81, 4622.89 )
 
 [node name="Enemy_Charge" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 3726.47, 3380.35 )
@@ -68,7 +75,7 @@ position = Vector2( 3726.47, 3380.35 )
 position = Vector2( 5187.55, 4485.07 )
 
 [node name="Enemy_Charge3" parent="Enemies" instance=ExtResource( 11 )]
-position = Vector2( 2286.78, 5689.56 )
+position = Vector2( 2324.83, 5418.42 )
 
 [node name="Enemy_Fast" parent="Enemies" instance=ExtResource( 9 )]
 position = Vector2( 875.597, 4228.49 )
@@ -94,13 +101,19 @@ position = Vector2( 2721.54, 1178.05 )
 [node name="Enemy_Fast8" parent="Enemies" instance=ExtResource( 9 )]
 position = Vector2( 3248.95, 4741.65 )
 
+[node name="Enemy_Shooter" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( 6743.04, 3692.44 )
+
 [node name="Hint 03" type="Label" parent="."]
-margin_left = 1297.14
-margin_top = 3336.52
-margin_right = 1605.14
-margin_bottom = 3497.52
+margin_left = 1345.19
+margin_top = 3333.18
+margin_right = 1552.19
+margin_bottom = 3555.18
 theme = ExtResource( 8 )
-text = "Someone was faster!"
+custom_fonts/font = ExtResource( 14 )
+text = "I needed it
+
+Sorry!"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -108,7 +121,7 @@ __meta__ = {
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 pause_mode = 2
-color = Color( 0.188235, 0.227451, 0.239216, 0.803922 )
+color = Color( 0.0784314, 0.133333, 0.25098, 1 )
 script = ExtResource( 12 )
 
 [editable path="Player"]

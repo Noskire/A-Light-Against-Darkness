@@ -11,16 +11,19 @@ func _get_configuration_warning() -> String:
 
 func _ready() -> void:
 	$Menu/MenuButton.grab_focus()
-	if PlayerData.best_time < 0 || PlayerData.time < PlayerData.best_time:
-		PlayerData.best_time = PlayerData.time
-		time.text = "Time: %ss (New Highscore)" % PlayerData.time
+	var current_scene_id = 100
+	var fire_strenght = GlobalSettings.get_level_light(current_scene_id)
+	print("EndScreen: ", fire_strenght)
+	var total_time = GlobalSettings.get_level_time(current_scene_id)
+	var total_deaths = GlobalSettings.get_level_deaths(current_scene_id)
+	if GlobalSettings.update_best_time(total_time):
+		time.text = "Time: %ss (New Highscore)" % total_time
 	else:
-		time.text = "Time: %ss" % PlayerData.time
-	deaths.text = "Deaths: %s" % PlayerData.deaths
+		time.text = "Time: %ss" % total_time
+	deaths.text = "Deaths: %s" % total_deaths
 
 func _on_MenuButton_button_up():
 	# "Retry" and then call MainScreen
-	PlayerData.time = -1.0
 	get_tree().paused = false
 	
 	var err

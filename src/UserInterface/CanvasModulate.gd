@@ -1,8 +1,8 @@
 extends CanvasModulate
 
-export var initial_color = Color("#303A3D")
+export var initial_color = Color("#142240")
 export var final_color = Color("#000000")
-export var current_color = Color("#303A3D")
+export var current_color = Color("#142240")
 export var transition_time = 1.0
 export var timer = 0.0
 export var weight = 0

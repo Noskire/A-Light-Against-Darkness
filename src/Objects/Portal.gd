@@ -4,6 +4,7 @@ extends Area2D
 onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 export var next_scene: PackedScene
+export var current_scene_id: int
 
 var player: Node2D
 
@@ -18,9 +19,8 @@ func go_up() -> void:
 	anim_player.play("fade_in")
 	yield(anim_player, "animation_finished")
 	
-	# Save time and pass on
-	PlayerData.time = int (player.current_time)
-	PlayerData.fire_strenght = player.fire_strenght
+	# Save scores and pass on
+	GlobalSettings.update_level(current_scene_id, player.fire_strenght, int (player.current_time), 0)
 	
 	var err
 	err = get_tree().change_scene_to(next_scene)

@@ -26,9 +26,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-PlayerData="*res://src/Autoload/PlayerData.tscn"
 Save="*res://src/UserInterface/save.gd"
-GlobalSettings="*res://src/UserInterface/global_settings.gd"
+GlobalSettings="*res://src/UserInterface/GlobalSettings.gd"
+MusicController="*res://src/Autoload/MusicController.tscn"
 
 [display]
 

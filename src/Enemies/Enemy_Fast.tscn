@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Enemies/Enemy_Fast.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/Bat.png" type="Texture" id=2]
+[ext_resource path="res://assets/sounds/e_escape.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/e_hurt1.wav" type="AudioStream" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 45.6473
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Fleeing"
 length = 0.8
 tracks/0/type = "value"
@@ -57,9 +59,32 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("SFXFast:stream")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ), ExtResource( 3 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("SFXFast:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
 
-[sub_resource type="Animation" id=2]
-resource_name = "Idle"
+[sub_resource type="Animation" id=3]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -74,6 +99,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 1 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [node name="Enemy_Fast" type="KinematicBody2D"]
 collision_layer = 4
@@ -87,6 +124,7 @@ hframes = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 0.368627, 0.870588, 0.247059, 1 )
 shape = SubResource( 1 )
+disabled = true
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 position = Vector2( -18.9204, -15.5958 )
@@ -97,7 +135,12 @@ physics_process_parent = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Fleeing = SubResource( 3 )
-anims/Idle = SubResource( 2 )
+anims/Fleeing = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+
+[node name="SFXFast" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -5.0
+bus = "SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

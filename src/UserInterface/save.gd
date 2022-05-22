@@ -2,6 +2,7 @@ extends Node
 
 const SAVEFILE = "user://SAVEFILE.save"
 const SAVEKEYS = "user://keybinds.ini"
+const SAVESCORE = "user://SAVESCORE.save"
 
 var standard_keybinds = {
 	"Up": 87,
@@ -14,24 +15,24 @@ var standard_keybinds = {
 
 var game_data = {}
 var keybinds = {}
+var score = {}
 var configfile
 
 func _ready():
 	load_data()
 	load_keys()
+	load_score()
 
 func load_data():
 	var file = File.new()
 	if not file.file_exists(SAVEFILE):
 		game_data = {
 			"fullscreen_on": false,
-			"vsync_on": false,
-			"bloom_on": false,
+			"bloom_on": true,
 			"brightness": 1,
 			"master_vol": -10,
-			"music_vol": -10,
-			"sfx_vol": -10,
-			"mouse_sens": 0.1,
+			"music_vol": -20,
+			"sfx_vol": -20
 		}
 		save_data()
 	file.open(SAVEFILE, File.READ)
@@ -69,3 +70,35 @@ func save_keys():
 		else:
 			configfile.set_value("keybinds", key, "")
 	configfile.save(SAVEKEYS)
+
+func load_score():
+	var file = File.new()
+	if not file.file_exists(SAVESCORE):
+		score = {
+			"best_time": -1.0,
+			"l01_torch": 0.0,
+			"l01_time": 0.0,
+			"l01_deaths": 0,
+			"l02_torch": 0.0,
+			"l02_time": 0.0,
+			"l02_deaths": 0,
+			"l03_torch": 0.0,
+			"l03_time": 0.0,
+			"l03_deaths": 0,
+			"l04_torch": 0.0,
+			"l04_time": 0.0,
+			"l04_deaths": 0,
+			"l05_torch": 0.0,
+			"l05_time": 0.0,
+			"l05_deaths": 0
+		}
+		save_score()
+	file.open(SAVESCORE, File.READ)
+	score = file.get_var()
+	file.close()
+
+func save_score():
+	var file = File.new()
+	file.open(SAVESCORE, File.WRITE)
+	file.store_var(score)
+	file.close()

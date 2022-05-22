@@ -4,7 +4,6 @@ onready var tab_container = $Bg/TabC
 
 # Video Settings
 onready var display_options_btn = $Bg/TabC/Video/MarginC/Grid/DisplayOption
-onready var vsync_btn = $Bg/TabC/Video/MarginC/Grid/VSyncBtn
 onready var bloom_btn = $Bg/TabC/Video/MarginC/Grid/BloomBtn
 onready var brightness_value = $Bg/TabC/Video/MarginC/Grid/HBox/BrightnessValue
 onready var brightness_slide = $Bg/TabC/Video/MarginC/Grid/HBox/BrightnessSlider
@@ -17,10 +16,6 @@ onready var music_slide = $Bg/TabC/Audio/MarginC/Grid/HBox2/MusicVolSlider
 onready var sfx_value = $Bg/TabC/Audio/MarginC/Grid/HBox3/SfxVolValue
 onready var sfx_slide = $Bg/TabC/Audio/MarginC/Grid/HBox3/SfxVolSlider
 
-# Gameplay Setting
-onready var mouse_sens_value = $Bg/TabC/Gameplay/MarginC/Grid/HBox/MouseSensValue
-onready var mouse_sens_slide = $Bg/TabC/Gameplay/MarginC/Grid/HBox/MouseSensSlider
-
 # Keybind Setting
 onready var keybind_grid = $Bg/TabC/Keybind/MarginC/Grid
 onready var button_script = load("res://src/UserInterface/KeyButton.gd")
@@ -30,15 +25,12 @@ var keybinds
 func _ready():
 	display_options_btn.select(1 if Save.game_data.fullscreen_on else 0)
 	GlobalSettings.toggle_fullscreen(Save.game_data.fullscreen_on)
-	vsync_btn.pressed = Save.game_data.vsync_on
 	bloom_btn.pressed = Save.game_data.bloom_on
 	brightness_slide.value = Save.game_data.brightness
 	
 	master_slide.value = Save.game_data.master_vol
 	music_slide.value = Save.game_data.music_vol
 	sfx_slide.value = Save.game_data.sfx_vol
-	
-	mouse_sens_slide.value = Save.game_data.mouse_sens
 	
 	GlobalSettings.set_keybinds()
 	keybinds = Save.keybinds.duplicate()
@@ -73,9 +65,6 @@ func _ready():
 func _on_DisplayOption_item_selected(index):
 	GlobalSettings.toggle_fullscreen(true if index == 1 else false)
 
-func _on_VSyncBtn_toggled(button_pressed):
-	GlobalSettings.toggle_vsync(button_pressed)
-
 func _on_BloomBtn_toggled(button_pressed):
 	GlobalSettings.toggle_bloom(button_pressed)
 
@@ -95,10 +84,6 @@ func _on_SfxVolSlider_value_changed(value):
 	GlobalSettings.update_vol(2, value)
 	sfx_value.text = str(Save.game_data.sfx_vol)
 
-func _on_MouseSensSlider_value_changed(value):
-	GlobalSettings.update_mouse_sens(value)
-	mouse_sens_value.text = str(value)
-
 func change_bind(key, value):
 	keybinds[key] = value
 	for k in keybinds.keys():
@@ -108,7 +93,7 @@ func change_bind(key, value):
 			buttons[k].text = "Unassigned"
 
 func _on_TabC_tab_selected(tab):
-	if tab == 4:
+	if tab == 3:
 		tab_container.current_tab = 0
 		self.visible = false
 

@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Screens/EndScreen.gd" type="Script" id=1]
+[ext_resource path="res://assets/ui_theme_darker_main.tres" type="Theme" id=2]
 [ext_resource path="res://assets/images/background.png" type="Texture" id=3]
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=4]
 
 [node name="EndScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 4 )
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -25,10 +26,11 @@ __meta__ = {
 [node name="Final Mesage" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -172.0
-margin_top = 121.226
-margin_right = 172.0
-margin_bottom = 282.226
+margin_left = -339.0
+margin_top = 40.4087
+margin_right = 339.0
+margin_bottom = 359.409
+theme = ExtResource( 4 )
 text = "Congratulations!
 You finished the game!"
 align = 1
@@ -41,10 +43,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -194.5
-margin_top = -199.827
-margin_right = 194.5
-margin_bottom = -120.827
+margin_left = -230.5
+margin_top = -153.991
+margin_right = 230.5
+margin_bottom = -74.9913
 text = "Time: %s (New Highscore)"
 align = 1
 __meta__ = {
@@ -56,10 +58,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -80.0
-margin_top = -104.583
-margin_right = 80.0
-margin_bottom = -25.5834
+margin_left = -96.0
+margin_top = -73.1737
+margin_right = 96.0
+margin_bottom = 5.82593
 text = "Deaths: %s"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -71,9 +73,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -300.0
-margin_top = 10.0
+margin_top = 66.1232
 margin_right = 300.0
-margin_bottom = 310.0
+margin_bottom = 366.123
 custom_constants/separation = 25
 __meta__ = {
 "_edit_use_anchors_": false
@@ -84,12 +86,12 @@ margin_right = 600.0
 margin_bottom = 137.0
 focus_neighbour_top = NodePath("../QuitButton")
 size_flags_vertical = 3
-text = "Play Again"
+text = "Main Screen"
 
 [node name="QuitButton" type="Button" parent="Menu"]
 margin_top = 162.0
 margin_right = 600.0
-margin_bottom = 300.0
+margin_bottom = 299.0
 focus_neighbour_bottom = NodePath("../MenuButton")
 size_flags_vertical = 3
 text = "Quit"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/images/light.png" type="Texture" id=1]
 [ext_resource path="res://src/Objects/Brazier.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/Fire.png" type="Texture" id=3]
+[ext_resource path="res://assets/sounds/Fire_Sound.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 49.0648, 49.1911 )
@@ -29,6 +30,7 @@ collision_layer = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 3, 1.5, 1, 1 )
 texture = ExtResource( 3 )
 hframes = 4
 vframes = 2
@@ -49,4 +51,11 @@ shape = SubResource( 1 )
 autoplay = "Burning"
 anims/Burning = SubResource( 2 )
 
+[node name="FireSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+attenuation = 2.5
+bus = "SFX"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="FireSound" to="." method="_on_FireSound_finished"]

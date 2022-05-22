@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/Levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=2]
@@ -11,9 +11,15 @@
 [ext_resource path="res://assets/images/light.png" type="Texture" id=9]
 [ext_resource path="res://src/UserInterface/CanvasModulate.gd" type="Script" id=10]
 [ext_resource path="res://assets/sounds/Water_Splash.wav" type="AudioStream" id=11]
+[ext_resource path="res://src/UserInterface/WorldEnvironment.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/dynamicfont_darker_hints.tres" type="DynamicFont" id=13]
+[ext_resource path="res://assets/images/Torch.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/Willow_Sprite.png" type="Texture" id=15]
 
-[sub_resource type="Animation" id=1]
-resource_name = "TheFall"
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 47.8607, 224.824 )
+
+[sub_resource type="Animation" id=2]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Player:rotation_degrees")
@@ -58,6 +64,8 @@ __meta__ = {
 "_edit_vertical_guides_": [ 2800.16 ]
 }
 
+[node name="WorldEnvironment" parent="." instance=ExtResource( 12 )]
+
 [node name="UserInterface" type="CanvasLayer" parent="."]
 layer = 100
 
@@ -73,13 +81,31 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 510.678, 592.045 )
-rotation = -4.71239
-scale = Vector2( 8.875, 8.875 )
+rotation = -6.28319
+scale = Vector2( 10, 10 )
 z_index = 1
+current_scene_id = 1
+
+[node name="Sprite" parent="Player" index="0"]
+texture = ExtResource( 15 )
 
 [node name="Camera2D" parent="Player" index="5"]
 limit_right = 2800
 limit_bottom = 1200
+
+[node name="TorchToCatch" type="Sprite" parent="."]
+position = Vector2( 1950, 750 )
+texture = ExtResource( 14 )
+
+[node name="Area2D" type="Area2D" parent="TorchToCatch"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TorchToCatch/Area2D"]
+shape = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="TorchToCatch"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 9 )
+color = Color( 0.647059, 0.705882, 0.827451, 0.490196 )
 
 [node name="Objects" type="Node" parent="."]
 
@@ -93,6 +119,7 @@ scale = Vector2( 4, 3 )
 [node name="Portal" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 2750, 750 )
 next_scene = ExtResource( 3 )
+current_scene_id = 1
 
 [node name="MoonLight" type="Light2D" parent="Objects"]
 position = Vector2( 510, 590 )
@@ -102,13 +129,14 @@ color = Color( 0.647059, 0.705882, 0.827451, 0.490196 )
 shadow_enabled = true
 
 [node name="Hint 01" type="Label" parent="."]
-margin_left = 2112.04
-margin_top = 723.547
-margin_right = 2398.04
-margin_bottom = 884.547
+margin_left = 2052.04
+margin_top = 708.108
+margin_right = 2437.04
+margin_bottom = 855.108
 theme = ExtResource( 8 )
-text = "Touch the brazier
-to relit your Torch"
+custom_fonts/font = ExtResource( 13 )
+text = "Grab a light!
+The path is arduous!"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -116,17 +144,18 @@ __meta__ = {
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 pause_mode = 2
-color = Color( 0.188235, 0.227451, 0.239216, 1 )
+color = Color( 0.0784314, 0.133333, 0.25098, 1 )
 script = ExtResource( 10 )
-initial_color = Color( 0.0784314, 0.133333, 0.25098, 1 )
 current_color = Color( 0.0784314, 0.133333, 0.25098, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "TheFall"
-anims/TheFall = SubResource( 1 )
+anims/TheFall = SubResource( 2 )
 
 [node name="WaterSplashSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 bus = "SFX"
+
+[connection signal="body_entered" from="TorchToCatch/Area2D" to="Player" method="_on_Area2D_body_entered"]
 
 [editable path="Player"]

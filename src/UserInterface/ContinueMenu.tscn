@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/ui_theme_darker_menu.tres" type="Theme" id=1]
+[ext_resource path="res://src/UserInterface/ContinueMenu.gd" type="Script" id=2]
+[ext_resource path="res://assets/ui_theme_darker_scenes.tres" type="Theme" id=3]
+
+[node name="ContinueMenu" type="Popup"]
+margin_left = 480.0
+margin_top = 270.0
+margin_right = 1440.0
+margin_bottom = 1010.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.188235, 0.227451, 0.239216, 0.686275 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabC" type="TabContainer" parent="Bg"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Levels" type="Tabs" parent="Bg/TabC"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 82.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="MarginC" type="MarginContainer" parent="Bg/TabC/Levels"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 25
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="GridContainer" parent="Bg/TabC/Levels/MarginC"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 925.0
+margin_bottom = 628.0
+theme = ExtResource( 3 )
+custom_constants/vseparation = 20
+columns = 4
+
+[node name="X" type="Tabs" parent="Bg/TabC"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[connection signal="tab_selected" from="Bg/TabC" to="." method="_on_TabC_tab_selected"]
