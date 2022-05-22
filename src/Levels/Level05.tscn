@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/Levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/UserInterface/UserInterface.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Enemies/Boss.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Objects/Brazier.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/UserInterface/AchievementScreen.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/ui_theme_darker_menu.tres" type="Theme" id=9]
 [ext_resource path="res://assets/images/Boss_Face.png" type="Texture" id=10]
 [ext_resource path="res://src/UserInterface/CanvasModulate.gd" type="Script" id=14]
@@ -25,6 +26,8 @@ __meta__ = {
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 layer = 100
+
+[node name="AchievementScreen" parent="UserInterface" instance=ExtResource( 8 )]
 
 [node name="UserInterface" parent="UserInterface" instance=ExtResource( 5 )]
 

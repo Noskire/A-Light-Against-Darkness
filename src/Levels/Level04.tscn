@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/Levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://src/UserInterface/CanvasModulate.gd" type="Script" id=14]
 [ext_resource path="res://src/UserInterface/WorldEnvironment.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/dynamicfont_darker_hints.tres" type="DynamicFont" id=16]
+[ext_resource path="res://src/UserInterface/AchievementScreen.tscn" type="PackedScene" id=17]
 
 [node name="Level04" type="Node2D"]
 __meta__ = {
@@ -27,6 +28,8 @@ __meta__ = {
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 layer = 100
+
+[node name="AchievementScreen" parent="UserInterface" instance=ExtResource( 17 )]
 
 [node name="UserInterface" parent="UserInterface" instance=ExtResource( 5 )]
 

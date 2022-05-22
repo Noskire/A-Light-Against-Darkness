@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Screens/EndScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/ui_theme_darker_main.tres" type="Theme" id=2]
 [ext_resource path="res://assets/images/background.png" type="Texture" id=3]
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=4]
+[ext_resource path="res://src/UserInterface/AchievementScreen.tscn" type="PackedScene" id=5]
 
 [node name="EndScreen" type="Control"]
 anchor_right = 1.0
@@ -14,6 +15,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 next_scene_path = "res://src/Screens/Main Screen.tscn"
+
+[node name="AchievementScreen" parent="." instance=ExtResource( 5 )]
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0

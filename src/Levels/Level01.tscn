@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/Levels/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/dynamicfont_darker_hints.tres" type="DynamicFont" id=13]
 [ext_resource path="res://assets/images/Torch.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/Willow_Sprite.png" type="Texture" id=15]
+[ext_resource path="res://src/UserInterface/AchievementScreen.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 47.8607, 224.824 )
@@ -68,6 +69,8 @@ __meta__ = {
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 layer = 100
+
+[node name="AchievementScreen" parent="UserInterface" instance=ExtResource( 16 )]
 
 [node name="UserInterface" parent="UserInterface" instance=ExtResource( 5 )]
 

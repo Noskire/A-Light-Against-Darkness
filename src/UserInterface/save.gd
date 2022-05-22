@@ -3,6 +3,7 @@ extends Node
 const SAVEFILE = "user://SAVEFILE.save"
 const SAVEKEYS = "user://keybinds.ini"
 const SAVESCORE = "user://SAVESCORE.save"
+const SAVEACHIEV = "user://SAVEACHIEV.save"
 
 var standard_keybinds = {
 	"Up": 87,
@@ -16,12 +17,14 @@ var standard_keybinds = {
 var game_data = {}
 var keybinds = {}
 var score = {}
+var achievements = {}
 var configfile
 
 func _ready():
 	load_data()
 	load_keys()
 	load_score()
+	load_achievements()
 
 func load_data():
 	var file = File.new()
@@ -37,12 +40,6 @@ func load_data():
 		save_data()
 	file.open(SAVEFILE, File.READ)
 	game_data = file.get_var()
-	file.close()
-
-func save_data():
-	var file = File.new()
-	file.open(SAVEFILE, File.WRITE)
-	file.store_var(game_data)
 	file.close()
 
 func load_keys():
@@ -62,6 +59,59 @@ func load_keys():
 		configfile.save(SAVEKEYS)
 		keybinds = standard_keybinds.duplicate()
 
+func load_score():
+	var file = File.new()
+	if not file.file_exists(SAVESCORE):
+		score = {
+			"best_time": -1.0,
+			"l01_torch": 0.0,
+			"l01_time": 0.0,
+			"l01_kills": 0,
+			"l01_deaths": 0,
+			"l02_torch": 0.0,
+			"l02_time": 0.0,
+			"l02_kills": 0,
+			"l02_deaths": 0,
+			"l03_torch": 0.0,
+			"l03_time": 0.0,
+			"l03_kills": 0,
+			"l03_deaths": 0,
+			"l04_torch": 0.0,
+			"l04_time": 0.0,
+			"l04_kills": 0,
+			"l04_deaths": 0,
+			"l05_torch": 0.0,
+			"l05_time": 0.0,
+			"l05_kills": 0,
+			"l05_deaths": 0
+		}
+		save_score()
+	file.open(SAVESCORE, File.READ)
+	score = file.get_var()
+	file.close()
+
+func load_achievements():
+	var file = File.new()
+	if not file.file_exists(SAVEACHIEV):
+		achievements = {
+			"One With the Darkness": false,
+			"One With the Light": false,
+			"Merciless Wretch!": false,
+			"Speedrunner": false,
+			"You Can DO IT!": false,
+			"Leave no Stone Unturned": false
+		}
+		save_achievements()
+	file.open(SAVEACHIEV, File.READ)
+	achievements = file.get_var()
+	file.close()
+
+func save_data():
+	var file = File.new()
+	file.open(SAVEFILE, File.WRITE)
+	file.store_var(game_data)
+	file.close()
+
 func save_keys():
 	for key in keybinds.keys():
 		var key_value = keybinds[key]
@@ -71,34 +121,14 @@ func save_keys():
 			configfile.set_value("keybinds", key, "")
 	configfile.save(SAVEKEYS)
 
-func load_score():
-	var file = File.new()
-	if not file.file_exists(SAVESCORE):
-		score = {
-			"best_time": -1.0,
-			"l01_torch": 0.0,
-			"l01_time": 0.0,
-			"l01_deaths": 0,
-			"l02_torch": 0.0,
-			"l02_time": 0.0,
-			"l02_deaths": 0,
-			"l03_torch": 0.0,
-			"l03_time": 0.0,
-			"l03_deaths": 0,
-			"l04_torch": 0.0,
-			"l04_time": 0.0,
-			"l04_deaths": 0,
-			"l05_torch": 0.0,
-			"l05_time": 0.0,
-			"l05_deaths": 0
-		}
-		save_score()
-	file.open(SAVESCORE, File.READ)
-	score = file.get_var()
-	file.close()
-
 func save_score():
 	var file = File.new()
 	file.open(SAVESCORE, File.WRITE)
 	file.store_var(score)
+	file.close()
+
+func save_achievements():
+	var file = File.new()
+	file.open(SAVEACHIEV, File.WRITE)
+	file.store_var(achievements)
 	file.close()

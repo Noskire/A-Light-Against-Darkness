@@ -12,8 +12,6 @@ func _get_configuration_warning() -> String:
 func _ready() -> void:
 	$Menu/MenuButton.grab_focus()
 	var current_scene_id = 100
-	var fire_strenght = GlobalSettings.get_level_light(current_scene_id)
-	print("EndScreen: ", fire_strenght)
 	var total_time = GlobalSettings.get_level_time(current_scene_id)
 	var total_deaths = GlobalSettings.get_level_deaths(current_scene_id)
 	if GlobalSettings.update_best_time(total_time):
@@ -21,6 +19,13 @@ func _ready() -> void:
 	else:
 		time.text = "Time: %ss" % total_time
 	deaths.text = "Deaths: %s" % total_deaths
+	
+	var fire_strenght = GlobalSettings.get_level_light(current_scene_id)
+	if fire_strenght == 0.1:
+		GlobalSettings.update_achievement("One With the Darkness")
+	var kills = GlobalSettings.get_kills()
+	if kills == 0:
+		GlobalSettings.update_achievement("One With the Light")
 
 func _on_MenuButton_button_up():
 	# "Retry" and then call MainScreen

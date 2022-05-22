@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/images/Mole.png" type="Texture" id=1]
 [ext_resource path="res://src/Enemies/Enemy_Shooter.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/sounds/e_hit2.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/sounds/e_escape.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/sounds/e_hurt2.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/images/light.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 45.6473
@@ -208,6 +209,12 @@ texture = ExtResource( 1 )
 hframes = 4
 vframes = 2
 frame = 2
+
+[node name="MoonLight" type="Light2D" parent="."]
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 7 )
+color = Color( 0.647059, 0.705882, 0.827451, 0.490196 )
+shadow_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 0.368627, 0.870588, 0.247059, 1 )

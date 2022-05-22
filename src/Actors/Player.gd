@@ -21,7 +21,7 @@ export var current_scene_id: int
 # Torch Stats
 const TORCH_COLOR = Color("#FFB075")
 const TORCH_UNLIT = Color("#000000")
-const MAX_TORCH_STRENGHT = 30.0
+const MAX_TORCH_STRENGHT = 25.0
 
 var current_color = TORCH_COLOR
 var fire_strenght # Also Player HP
@@ -45,6 +45,7 @@ var invulnerable = false
 
 var pass_sfx = 0
 var lvl01_event = false
+var kills = 0
 
 func _ready() -> void:
 	fire_strenght = GlobalSettings.get_level_light(current_scene_id - 1)
@@ -130,7 +131,7 @@ func take_damage() -> void:
 		sfx_player.play()
 
 func die() -> void:
-	GlobalSettings.update_level(current_scene_id, 0.0, 0.0, 1)
+	GlobalSettings.update_level(current_scene_id, 0.0, 0.0, 0, 1)
 	ui_control.player_died()
 	#queue_free()
 
@@ -142,6 +143,7 @@ func _on_Invulnerability_timeout():
 	enemy_collision.set_deferred("disabled", false)
 
 func _on_AttackArea_body_entered(body):
+	kills += 1
 	body.take_damage()
 
 func _on_AnimationPlayer_animation_finished(anim_name):

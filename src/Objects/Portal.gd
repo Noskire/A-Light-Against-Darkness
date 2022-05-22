@@ -20,7 +20,7 @@ func go_up() -> void:
 	yield(anim_player, "animation_finished")
 	
 	# Save scores and pass on
-	GlobalSettings.update_level(current_scene_id, player.fire_strenght, int (player.current_time), 0)
+	GlobalSettings.update_level(current_scene_id, player.fire_strenght, int (player.current_time), player.kills, 0)
 	
 	var err
 	err = get_tree().change_scene_to(next_scene)

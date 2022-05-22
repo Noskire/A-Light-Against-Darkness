@@ -1,8 +1,9 @@
 tool
 extends Control
 
-onready var settings_menu = $SettingsMenu
 onready var continue_menu = $ContinueMenu
+onready var achievements_menu = $AchievementsMenu
+onready var settings_menu = $SettingsMenu
 
 export(String, FILE) var next_scene_path: = ""
 
@@ -22,6 +23,9 @@ func _on_PlayButton_button_up():
 
 func _on_ContinueButton_button_up():
 	continue_menu.popup_centered()
+
+func _on_AchievementsButton_button_up():
+	achievements_menu.popup_centered()
 
 func _on_SettingsButton_button_up():
 	settings_menu.popup_centered()

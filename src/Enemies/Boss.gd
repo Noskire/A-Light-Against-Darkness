@@ -87,6 +87,7 @@ func take_damage() -> void:
 	if LIFE == 0:
 		$MoonLight.set_visible(false)
 		anim_player.play("Fleeing")
+		GlobalSettings.update_achievement("Merciless Wretch!")
 
 func shoot() -> void:
 	var vel_b
