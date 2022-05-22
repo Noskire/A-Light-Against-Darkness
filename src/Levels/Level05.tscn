@@ -172,7 +172,7 @@ limit_bottom = 5300
 [node name="Portal" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 2950, 50 )
 next_scene = ExtResource( 3 )
-current_scene_id = 4
+current_scene_id = 5
 
 [node name="Brazier" parent="Objects" instance=ExtResource( 7 )]
 position = Vector2( 2950, 950 )

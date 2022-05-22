@@ -9,7 +9,7 @@ var standard_keybinds = {
 	"Left": 65,
 	"Down": 83,
 	"Right": 68,
-	"Pause": 16777217,
+	"Pause": 80,
 	"Attack": 32
 }
 
