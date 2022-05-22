@@ -15,7 +15,6 @@ func _on_achievement_unlocked(value):
 		label.text = str("Achievement Unlocked:\n— ", value)
 		screen.set_visible(true)
 	else:
-		print("No")
 		label.text = str(label.text, "\n— ", value)
 	timer.start()
 

@@ -162,6 +162,7 @@ texture = ExtResource( 1 )
 [node name="ContinueMenu" parent="." instance=ExtResource( 9 )]
 
 [node name="AchievementsMenu" parent="." instance=ExtResource( 10 )]
+visible = false
 
 [node name="SettingsMenu" parent="." instance=ExtResource( 7 )]
 

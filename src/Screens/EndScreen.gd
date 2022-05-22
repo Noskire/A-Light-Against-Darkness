@@ -1,8 +1,9 @@
 tool
 extends Control
 
-onready var time: Label = get_node("Timer")
-onready var deaths: Label = get_node("Deaths")
+onready var time: Label = get_node("MarginC/VBox/Timer")
+onready var deaths: Label = get_node("MarginC/VBox/Deaths")
+onready var menu: Button = get_node("MarginC/VBox/Menu/MenuButton")
 
 export(String, FILE) var next_scene_path: = ""
 
@@ -10,7 +11,7 @@ func _get_configuration_warning() -> String:
 	return "The next scene path can't be empty" if next_scene_path == "" else ""
 
 func _ready() -> void:
-	$Menu/MenuButton.grab_focus()
+	menu.grab_focus()
 	var current_scene_id = 100
 	var total_time = GlobalSettings.get_level_time(current_scene_id)
 	var total_deaths = GlobalSettings.get_level_deaths(current_scene_id)
