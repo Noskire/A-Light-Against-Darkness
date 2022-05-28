@@ -248,6 +248,7 @@ tracks/0/keys = {
 }
 
 [node name="Enemy_Attack" type="KinematicBody2D"]
+scale = Vector2( 0.6, 0.6 )
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 2 )

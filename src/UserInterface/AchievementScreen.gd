@@ -12,7 +12,7 @@ func _ready():
 
 func _on_achievement_unlocked(value):
 	if timer.is_stopped():
-		label.text = str("Achievement Unlocked:\n— ", value)
+		label.set_text(tr("ACHUNLOCK") + "\n— " + value)
 		screen.set_visible(true)
 	else:
 		label.text = str(label.text, "\n— ", value)

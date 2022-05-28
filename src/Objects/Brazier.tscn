@@ -34,7 +34,6 @@ modulate = Color( 3, 1.5, 1, 1 )
 texture = ExtResource( 3 )
 hframes = 4
 vframes = 2
-frame = 7
 
 [node name="BrazierLight" type="Light2D" parent="."]
 texture = ExtResource( 1 )

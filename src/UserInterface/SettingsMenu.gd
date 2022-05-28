@@ -3,21 +3,22 @@ extends Popup
 onready var tab_container = $Bg/TabC
 
 # Video Settings
-onready var display_options_btn = $Bg/TabC/Video/MarginC/Grid/DisplayOption
-onready var bloom_btn = $Bg/TabC/Video/MarginC/Grid/BloomBtn
-onready var brightness_value = $Bg/TabC/Video/MarginC/Grid/HBox/BrightnessValue
-onready var brightness_slide = $Bg/TabC/Video/MarginC/Grid/HBox/BrightnessSlider
+onready var display_options_btn = $Bg/TabC/STVIDEO/MarginC/Grid/DisplayOption
+onready var bloom_btn = $Bg/TabC/STVIDEO/MarginC/Grid/BloomBtn
+onready var brightness_value = $Bg/TabC/STVIDEO/MarginC/Grid/HBox/BrightnessValue
+onready var brightness_slide = $Bg/TabC/STVIDEO/MarginC/Grid/HBox/BrightnessSlider
+onready var languages_btn = $Bg/TabC/STVIDEO/MarginC/Grid/Languages
 
 # Audio Settings
-onready var master_value = $Bg/TabC/Audio/MarginC/Grid/HBox1/MasterVolValue
-onready var master_slide = $Bg/TabC/Audio/MarginC/Grid/HBox1/MasterVolSlider
-onready var music_value = $Bg/TabC/Audio/MarginC/Grid/HBox2/MusicVolValue
-onready var music_slide = $Bg/TabC/Audio/MarginC/Grid/HBox2/MusicVolSlider
-onready var sfx_value = $Bg/TabC/Audio/MarginC/Grid/HBox3/SfxVolValue
-onready var sfx_slide = $Bg/TabC/Audio/MarginC/Grid/HBox3/SfxVolSlider
+onready var master_value = $Bg/TabC/STAUDIO/MarginC/Grid/HBox1/MasterVolValue
+onready var master_slide = $Bg/TabC/STAUDIO/MarginC/Grid/HBox1/MasterVolSlider
+onready var music_value = $Bg/TabC/STAUDIO/MarginC/Grid/HBox2/MusicVolValue
+onready var music_slide = $Bg/TabC/STAUDIO/MarginC/Grid/HBox2/MusicVolSlider
+onready var sfx_value = $Bg/TabC/STAUDIO/MarginC/Grid/HBox3/SfxVolValue
+onready var sfx_slide = $Bg/TabC/STAUDIO/MarginC/Grid/HBox3/SfxVolSlider
 
 # Keybind Setting
-onready var keybind_grid = $Bg/TabC/Keybind/MarginC/Grid
+onready var keybind_grid = $Bg/TabC/STKEYBIND/MarginC/Grid
 onready var button_script = load("res://src/UserInterface/KeyButton.gd")
 var buttons = {}
 var keybinds
@@ -32,6 +33,13 @@ func _ready():
 	music_slide.value = Save.game_data.music_vol
 	sfx_slide.value = Save.game_data.sfx_vol
 	
+	if Save.game_data.language == "en":
+		TranslationServer.set_locale("en")
+		languages_btn.selected = 1
+	elif Save.game_data.language == "pt":
+		TranslationServer.set_locale("pt")
+		languages_btn.selected = 2
+	
 	GlobalSettings.set_keybinds()
 	keybinds = Save.keybinds.duplicate()
 	for key in keybinds.keys():
@@ -42,13 +50,13 @@ func _ready():
 		button.set_h_size_flags(Control.SIZE_EXPAND)
 		button.set_h_size_flags(Control.SIZE_SHRINK_END)
 		
-		label.text = key
+		label.set_text(tr(str(key)))
 		
 		var button_value = keybinds[key]
 		if button_value != null:
 			button.text = OS.get_scancode_string(button_value)
 		else:
-			button.text = "Unassigned"
+			button.text.set_text(tr("STKUNASSIGNED"))
 		
 		button.set_script(button_script)
 		button.key = key
@@ -58,7 +66,21 @@ func _ready():
 		button.focus_mode = Control.FOCUS_NONE
 		
 		keybind_grid.add_child(label)
-		keybind_grid.add_child(button)
+		if key == "Attack":
+			var lbm = Label.new()
+			lbm.set_text("LMB / ")
+			lbm.set_h_size_flags(Control.SIZE_EXPAND)
+			lbm.set_h_size_flags(Control.SIZE_SHRINK_END)
+			
+			var hbox = HBoxContainer.new()
+			hbox.add_child(lbm)
+			hbox.add_child(button)
+			hbox.set_h_size_flags(Control.SIZE_EXPAND)
+			hbox.set_h_size_flags(Control.SIZE_SHRINK_END)
+			
+			keybind_grid.add_child(hbox)
+		else:
+			keybind_grid.add_child(button)
 		
 		buttons[key] = button
 
@@ -68,9 +90,22 @@ func _on_DisplayOption_item_selected(index):
 func _on_BloomBtn_toggled(button_pressed):
 	GlobalSettings.toggle_bloom(button_pressed)
 
+func _on_VsyncBtn_toggled(button_pressed):
+	GlobalSettings.toggle_vsync(button_pressed)
+	
 func _on_BrightnessSlider_value_changed(value):
 	GlobalSettings.update_brightness(value)
 	brightness_value.text = str(Save.game_data.brightness)
+
+func _on_Languages_item_selected(index):
+	if index == 1:
+		TranslationServer.set_locale("en")
+		Save.game_data.language = "en"
+	elif index == 2:
+		TranslationServer.set_locale("pt")
+		Save.game_data.language = "pt"
+	Save.save_data()
+	get_tree().reload_current_scene()
 
 func _on_MasterVolSlider_value_changed(value):
 	GlobalSettings.update_vol(0, value)
@@ -90,7 +125,7 @@ func change_bind(key, value):
 		if k != key and value != null and keybinds[k] == value:
 			keybinds[k] = null
 			buttons[k].value = null
-			buttons[k].text = "Unassigned"
+			buttons[k].set_text(tr("STKUNASSIGNED"))
 
 func _on_TabC_tab_selected(tab):
 	if tab == 3:

@@ -23,7 +23,7 @@ margin_left = -270.017
 margin_top = 105.269
 margin_right = -139.017
 margin_bottom = 184.269
-text = "Time: %s"
+text = "LVTIME %s"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -44,7 +44,7 @@ margin_left = -73.0
 margin_top = 161.038
 margin_right = 73.0
 margin_bottom = 240.038
-text = " Paused! "
+text = "PAUSED"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -68,28 +68,28 @@ margin_right = 600.0
 margin_bottom = 120.0
 focus_neighbour_top = NodePath("../QuitButton")
 size_flags_vertical = 3
-text = "Resume"
+text = "RESUME"
 
 [node name="RetryButton" type="Button" parent="PauseOverlay/Menu"]
 margin_top = 145.0
 margin_right = 600.0
 margin_bottom = 265.0
 size_flags_vertical = 3
-text = "Retry"
+text = "RETRY"
 
 [node name="SettingsButton" type="Button" parent="PauseOverlay/Menu"]
 margin_top = 290.0
 margin_right = 600.0
 margin_bottom = 410.0
 size_flags_vertical = 3
-text = "Settings"
+text = "SETTINGS"
 
 [node name="MenuButton" type="Button" parent="PauseOverlay/Menu"]
 margin_top = 435.0
 margin_right = 600.0
 margin_bottom = 555.0
 size_flags_vertical = 3
-text = "Main Menu"
+text = "MAINMENU"
 
 [node name="QuitButton" type="Button" parent="PauseOverlay/Menu"]
 margin_top = 580.0
@@ -97,7 +97,7 @@ margin_right = 600.0
 margin_bottom = 700.0
 focus_neighbour_bottom = NodePath("../ResumeButton")
 size_flags_vertical = 3
-text = "Quit"
+text = "QUIT"
 
 [node name="DiedTimer" type="Timer" parent="."]
 wait_time = 1.5

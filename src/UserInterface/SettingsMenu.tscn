@@ -34,7 +34,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Video" type="Tabs" parent="Bg/TabC"]
+[node name="STVIDEO" type="Tabs" parent="Bg/TabC"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -42,7 +42,7 @@ margin_top = 82.0
 margin_right = -5.0
 margin_bottom = -5.0
 
-[node name="MarginC" type="MarginContainer" parent="Bg/TabC/Video"]
+[node name="MarginC" type="MarginContainer" parent="Bg/TabC/STVIDEO"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 25
@@ -53,63 +53,76 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Grid" type="GridContainer" parent="Bg/TabC/Video/MarginC"]
+[node name="Grid" type="GridContainer" parent="Bg/TabC/STVIDEO/MarginC"]
 margin_left = 25.0
 margin_top = 25.0
-margin_right = 925.0
+margin_right = 975.0
 margin_bottom = 628.0
 custom_constants/vseparation = 20
 columns = 2
 
-[node name="DisplayMode" type="Label" parent="Bg/TabC/Video/MarginC/Grid"]
-margin_right = 259.0
+[node name="DisplayMode" type="Label" parent="Bg/TabC/STVIDEO/MarginC/Grid"]
+margin_right = 376.0
 margin_bottom = 72.0
-text = "Display Mode"
+text = "STVDISPLAYMODE"
 
-[node name="DisplayOption" type="OptionButton" parent="Bg/TabC/Video/MarginC/Grid"]
-margin_left = 632.0
-margin_right = 900.0
+[node name="DisplayOption" type="OptionButton" parent="Bg/TabC/STVIDEO/MarginC/Grid"]
+margin_left = 380.0
+margin_right = 950.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 10
-text = "Windowed"
+text = "STVDISPLAYWINDOWED"
 align = 1
-items = [ "Windowed", null, false, 0, null, "Fullscreen", null, false, 1, null ]
+items = [ "STVDISPLAYWINDOWED", null, false, 0, null, "STVDISPLAYFULLSCREEN", null, false, 1, null ]
 selected = 0
 
-[node name="Bloom" type="Label" parent="Bg/TabC/Video/MarginC/Grid"]
+[node name="Bloom" type="Label" parent="Bg/TabC/STVIDEO/MarginC/Grid"]
 margin_top = 92.0
-margin_right = 259.0
+margin_right = 376.0
 margin_bottom = 164.0
-text = "Bloom"
+text = "STVBLOOM"
 
-[node name="BloomBtn" type="CheckButton" parent="Bg/TabC/Video/MarginC/Grid"]
-margin_left = 836.0
+[node name="BloomBtn" type="CheckButton" parent="Bg/TabC/STVIDEO/MarginC/Grid"]
+margin_left = 886.0
 margin_top = 92.0
-margin_right = 900.0
+margin_right = 950.0
 margin_bottom = 164.0
 size_flags_horizontal = 10
 
-[node name="Brightness" type="Label" parent="Bg/TabC/Video/MarginC/Grid"]
+[node name="VSync" type="Label" parent="Bg/TabC/STVIDEO/MarginC/Grid"]
 margin_top = 184.0
-margin_right = 259.0
+margin_right = 376.0
 margin_bottom = 256.0
-text = "Brightness"
+text = "STVVSYNC"
 
-[node name="HBox" type="HBoxContainer" parent="Bg/TabC/Video/MarginC/Grid"]
-margin_left = 500.0
+[node name="VsyncBtn" type="CheckButton" parent="Bg/TabC/STVIDEO/MarginC/Grid"]
+margin_left = 886.0
 margin_top = 184.0
-margin_right = 900.0
+margin_right = 950.0
 margin_bottom = 256.0
+size_flags_horizontal = 10
+
+[node name="Brightness" type="Label" parent="Bg/TabC/STVIDEO/MarginC/Grid"]
+margin_top = 276.0
+margin_right = 376.0
+margin_bottom = 348.0
+text = "STVBRIGHTNESS"
+
+[node name="HBox" type="HBoxContainer" parent="Bg/TabC/STVIDEO/MarginC/Grid"]
+margin_left = 550.0
+margin_top = 276.0
+margin_right = 950.0
+margin_bottom = 348.0
 rect_min_size = Vector2( 400, 0 )
 size_flags_horizontal = 10
 
-[node name="BrightnessValue" type="Label" parent="Bg/TabC/Video/MarginC/Grid/HBox"]
+[node name="BrightnessValue" type="Label" parent="Bg/TabC/STVIDEO/MarginC/Grid/HBox"]
 margin_right = 17.0
 margin_bottom = 72.0
 text = "1"
 
-[node name="BrightnessSlider" type="HSlider" parent="Bg/TabC/Video/MarginC/Grid/HBox"]
+[node name="BrightnessSlider" type="HSlider" parent="Bg/TabC/STVIDEO/MarginC/Grid/HBox"]
 margin_left = 100.0
 margin_right = 400.0
 margin_bottom = 72.0
@@ -121,7 +134,23 @@ max_value = 2.0
 step = 0.1
 value = 1.0
 
-[node name="Audio" type="Tabs" parent="Bg/TabC"]
+[node name="Language" type="Label" parent="Bg/TabC/STVIDEO/MarginC/Grid"]
+margin_top = 368.0
+margin_right = 376.0
+margin_bottom = 440.0
+text = "STVLANGUAGE"
+
+[node name="Languages" type="OptionButton" parent="Bg/TabC/STVIDEO/MarginC/Grid"]
+margin_left = 610.0
+margin_top = 368.0
+margin_right = 950.0
+margin_bottom = 440.0
+size_flags_horizontal = 10
+text = "STVLCHOOSE"
+items = [ "STVLCHOOSE", null, false, 0, null, "English", null, false, 1, null, "Português", null, false, 2, null ]
+selected = 0
+
+[node name="STAUDIO" type="Tabs" parent="Bg/TabC"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -130,7 +159,7 @@ margin_top = 82.0
 margin_right = -5.0
 margin_bottom = -5.0
 
-[node name="MarginC" type="MarginContainer" parent="Bg/TabC/Audio"]
+[node name="MarginC" type="MarginContainer" parent="Bg/TabC/STAUDIO"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 25
@@ -141,7 +170,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Grid" type="GridContainer" parent="Bg/TabC/Audio/MarginC"]
+[node name="Grid" type="GridContainer" parent="Bg/TabC/STAUDIO/MarginC"]
 margin_left = 25.0
 margin_top = 25.0
 margin_right = 925.0
@@ -149,26 +178,26 @@ margin_bottom = 628.0
 custom_constants/vseparation = 20
 columns = 2
 
-[node name="MasterVol" type="Label" parent="Bg/TabC/Audio/MarginC/Grid"]
-margin_right = 285.0
+[node name="MasterVol" type="Label" parent="Bg/TabC/STAUDIO/MarginC/Grid"]
+margin_right = 328.0
 margin_bottom = 72.0
-text = "Master Volume"
+text = "STAMASTERVOL"
 
-[node name="HBox1" type="HBoxContainer" parent="Bg/TabC/Audio/MarginC/Grid"]
-margin_left = 536.0
+[node name="HBox1" type="HBoxContainer" parent="Bg/TabC/STAUDIO/MarginC/Grid"]
+margin_left = 500.0
 margin_right = 900.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 400, 0 )
 size_flags_horizontal = 10
 
-[node name="MasterVolValue" type="Label" parent="Bg/TabC/Audio/MarginC/Grid/HBox1"]
+[node name="MasterVolValue" type="Label" parent="Bg/TabC/STAUDIO/MarginC/Grid/HBox1"]
 margin_right = 60.0
 margin_bottom = 72.0
 text = "-10"
 
-[node name="MasterVolSlider" type="HSlider" parent="Bg/TabC/Audio/MarginC/Grid/HBox1"]
-margin_left = 64.0
-margin_right = 364.0
+[node name="MasterVolSlider" type="HSlider" parent="Bg/TabC/STAUDIO/MarginC/Grid/HBox1"]
+margin_left = 100.0
+margin_right = 400.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 10
@@ -177,28 +206,28 @@ min_value = -50.0
 max_value = 0.0
 value = -10.0
 
-[node name="MusicVol" type="Label" parent="Bg/TabC/Audio/MarginC/Grid"]
+[node name="MusicVol" type="Label" parent="Bg/TabC/STAUDIO/MarginC/Grid"]
 margin_top = 92.0
-margin_right = 285.0
+margin_right = 328.0
 margin_bottom = 164.0
-text = "Music Volume"
+text = "STAMUSICVOL"
 
-[node name="HBox2" type="HBoxContainer" parent="Bg/TabC/Audio/MarginC/Grid"]
-margin_left = 536.0
+[node name="HBox2" type="HBoxContainer" parent="Bg/TabC/STAUDIO/MarginC/Grid"]
+margin_left = 500.0
 margin_top = 92.0
 margin_right = 900.0
 margin_bottom = 164.0
 rect_min_size = Vector2( 400, 0 )
 size_flags_horizontal = 10
 
-[node name="MusicVolValue" type="Label" parent="Bg/TabC/Audio/MarginC/Grid/HBox2"]
+[node name="MusicVolValue" type="Label" parent="Bg/TabC/STAUDIO/MarginC/Grid/HBox2"]
 margin_right = 60.0
 margin_bottom = 72.0
 text = "-10"
 
-[node name="MusicVolSlider" type="HSlider" parent="Bg/TabC/Audio/MarginC/Grid/HBox2"]
-margin_left = 64.0
-margin_right = 364.0
+[node name="MusicVolSlider" type="HSlider" parent="Bg/TabC/STAUDIO/MarginC/Grid/HBox2"]
+margin_left = 100.0
+margin_right = 400.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 10
@@ -207,28 +236,28 @@ min_value = -50.0
 max_value = 0.0
 value = -10.0
 
-[node name="SfxVol" type="Label" parent="Bg/TabC/Audio/MarginC/Grid"]
+[node name="SfxVol" type="Label" parent="Bg/TabC/STAUDIO/MarginC/Grid"]
 margin_top = 184.0
-margin_right = 285.0
+margin_right = 328.0
 margin_bottom = 256.0
-text = "Sfx  Volume"
+text = "STASFXVOL"
 
-[node name="HBox3" type="HBoxContainer" parent="Bg/TabC/Audio/MarginC/Grid"]
-margin_left = 536.0
+[node name="HBox3" type="HBoxContainer" parent="Bg/TabC/STAUDIO/MarginC/Grid"]
+margin_left = 500.0
 margin_top = 184.0
 margin_right = 900.0
 margin_bottom = 256.0
 rect_min_size = Vector2( 400, 0 )
 size_flags_horizontal = 10
 
-[node name="SfxVolValue" type="Label" parent="Bg/TabC/Audio/MarginC/Grid/HBox3"]
+[node name="SfxVolValue" type="Label" parent="Bg/TabC/STAUDIO/MarginC/Grid/HBox3"]
 margin_right = 60.0
 margin_bottom = 72.0
 text = "-10"
 
-[node name="SfxVolSlider" type="HSlider" parent="Bg/TabC/Audio/MarginC/Grid/HBox3"]
-margin_left = 64.0
-margin_right = 364.0
+[node name="SfxVolSlider" type="HSlider" parent="Bg/TabC/STAUDIO/MarginC/Grid/HBox3"]
+margin_left = 100.0
+margin_right = 400.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 10
@@ -240,7 +269,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Keybind" type="Tabs" parent="Bg/TabC"]
+[node name="STKEYBIND" type="Tabs" parent="Bg/TabC"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -249,7 +278,7 @@ margin_top = 82.0
 margin_right = -5.0
 margin_bottom = -5.0
 
-[node name="MarginC" type="MarginContainer" parent="Bg/TabC/Keybind"]
+[node name="MarginC" type="MarginContainer" parent="Bg/TabC/STKEYBIND"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 25
@@ -260,28 +289,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Grid" type="GridContainer" parent="Bg/TabC/Keybind/MarginC"]
+[node name="Grid" type="GridContainer" parent="Bg/TabC/STKEYBIND/MarginC"]
 margin_left = 25.0
 margin_top = 25.0
 margin_right = 925.0
 margin_bottom = 628.0
 columns = 2
 
-[node name="Reset" type="Button" parent="Bg/TabC/Keybind/MarginC/Grid"]
-margin_left = 61.0
-margin_right = 387.0
+[node name="Reset" type="Button" parent="Bg/TabC/STKEYBIND/MarginC/Grid"]
+margin_left = 70.0
+margin_right = 377.0
 margin_bottom = 72.0
 focus_mode = 0
 size_flags_horizontal = 6
-text = "Reset Settings"
+text = "STKRESETST"
 
-[node name="Save" type="Button" parent="Bg/TabC/Keybind/MarginC/Grid"]
-margin_left = 521.0
-margin_right = 831.0
+[node name="Save" type="Button" parent="Bg/TabC/STKEYBIND/MarginC/Grid"]
+margin_left = 533.0
+margin_right = 819.0
 margin_bottom = 72.0
 focus_mode = 0
 size_flags_horizontal = 6
-text = "Save Settings"
+text = "STKSAVEST"
 
 [node name="X" type="Tabs" parent="Bg/TabC"]
 visible = false
@@ -293,11 +322,13 @@ margin_right = -5.0
 margin_bottom = -5.0
 
 [connection signal="tab_selected" from="Bg/TabC" to="." method="_on_TabC_tab_selected"]
-[connection signal="item_selected" from="Bg/TabC/Video/MarginC/Grid/DisplayOption" to="." method="_on_DisplayOption_item_selected"]
-[connection signal="toggled" from="Bg/TabC/Video/MarginC/Grid/BloomBtn" to="." method="_on_BloomBtn_toggled"]
-[connection signal="value_changed" from="Bg/TabC/Video/MarginC/Grid/HBox/BrightnessSlider" to="." method="_on_BrightnessSlider_value_changed"]
-[connection signal="value_changed" from="Bg/TabC/Audio/MarginC/Grid/HBox1/MasterVolSlider" to="." method="_on_MasterVolSlider_value_changed"]
-[connection signal="value_changed" from="Bg/TabC/Audio/MarginC/Grid/HBox2/MusicVolSlider" to="." method="_on_MusicVolSlider_value_changed"]
-[connection signal="value_changed" from="Bg/TabC/Audio/MarginC/Grid/HBox3/SfxVolSlider" to="." method="_on_SfxVolSlider_value_changed"]
-[connection signal="button_up" from="Bg/TabC/Keybind/MarginC/Grid/Reset" to="." method="_on_Reset_button_up"]
-[connection signal="button_up" from="Bg/TabC/Keybind/MarginC/Grid/Save" to="." method="_on_Save_button_up"]
+[connection signal="item_selected" from="Bg/TabC/STVIDEO/MarginC/Grid/DisplayOption" to="." method="_on_DisplayOption_item_selected"]
+[connection signal="toggled" from="Bg/TabC/STVIDEO/MarginC/Grid/BloomBtn" to="." method="_on_BloomBtn_toggled"]
+[connection signal="toggled" from="Bg/TabC/STVIDEO/MarginC/Grid/VsyncBtn" to="." method="_on_VsyncBtn_toggled"]
+[connection signal="value_changed" from="Bg/TabC/STVIDEO/MarginC/Grid/HBox/BrightnessSlider" to="." method="_on_BrightnessSlider_value_changed"]
+[connection signal="item_selected" from="Bg/TabC/STVIDEO/MarginC/Grid/Languages" to="." method="_on_Languages_item_selected"]
+[connection signal="value_changed" from="Bg/TabC/STAUDIO/MarginC/Grid/HBox1/MasterVolSlider" to="." method="_on_MasterVolSlider_value_changed"]
+[connection signal="value_changed" from="Bg/TabC/STAUDIO/MarginC/Grid/HBox2/MusicVolSlider" to="." method="_on_MusicVolSlider_value_changed"]
+[connection signal="value_changed" from="Bg/TabC/STAUDIO/MarginC/Grid/HBox3/SfxVolSlider" to="." method="_on_SfxVolSlider_value_changed"]
+[connection signal="button_up" from="Bg/TabC/STKEYBIND/MarginC/Grid/Reset" to="." method="_on_Reset_button_up"]
+[connection signal="button_up" from="Bg/TabC/STKEYBIND/MarginC/Grid/Save" to="." method="_on_Save_button_up"]

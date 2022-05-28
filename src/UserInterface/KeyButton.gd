@@ -18,11 +18,11 @@ func _input(event):
 			if value != null:
 				text = OS.get_scancode_string(value)
 			else:
-				text = "Unassigned"
+				text = "STKUNASSIGNED"
 			pressed = false
 			waiting_input = false
 
 func _toggled(button_pressed):
 	if button_pressed:
 		waiting_input = true
-		set_text("Press Any Key:")
+		set_text("STKPRESSKEY")

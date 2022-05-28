@@ -11,14 +11,14 @@ onready var settings_menu = $SettingsMenu
 
 export(String, FILE) var next_scene_path: = ""
 
-const PAUSED_MESSAGE: = " Paused! "
-const DIED_MESSAGE:   = "You died!"
+const PAUSED_MESSAGE: = "PAUSED"
+const DIED_MESSAGE:   = "YOUDIED"
 
 func _get_configuration_warning() -> String:
 	return "The next scene path can't be empty" if next_scene_path == "" else ""
 
 func update_interface(value: int) -> void:
-	time.text = "Time: %ss" % value
+	time.set_text(tr("LVTIME") + " %ss" % value)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Pause") and pause_title.text != DIED_MESSAGE:

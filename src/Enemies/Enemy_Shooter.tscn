@@ -129,7 +129,6 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=4]
 length = 0.8
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -198,6 +197,7 @@ tracks/1/keys = {
 }
 
 [node name="Enemy_Shooter" type="KinematicBody2D"]
+scale = Vector2( 0.6, 0.6 )
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 2 )

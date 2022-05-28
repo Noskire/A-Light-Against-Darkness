@@ -1,13 +1,16 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/ui_theme_darker_menu.tres" type="Theme" id=1]
+[ext_resource path="res://assets/ui_theme_darker_achievement.tres" type="Theme" id=1]
 [ext_resource path="res://src/UserInterface/AchievementScreen.gd" type="Script" id=2]
 
 [node name="AchievementScreen" type="Control"]
 pause_mode = 2
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -960.0
+margin_right = -280.0
+margin_bottom = 350.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -15,19 +18,19 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 684.0
-margin_bottom = 354.0
+margin_right = 680.0
+margin_bottom = 350.0
 color = Color( 0.0784314, 0.133333, 0.25098, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 50.0
-margin_top = 25.0
-margin_right = 574.0
-margin_bottom = 322.0
+margin_right = 680.0
+margin_bottom = 350.0
 text = "Achievement Unlocked:
+— Leave no Stone Unturned
+— One With the Darkness
 — Leave no Stone Unturned"
 __meta__ = {
 "_edit_use_anchors_": false

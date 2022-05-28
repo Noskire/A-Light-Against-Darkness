@@ -16,10 +16,10 @@ func _ready() -> void:
 	var total_time = GlobalSettings.get_level_time(current_scene_id)
 	var total_deaths = GlobalSettings.get_level_deaths(current_scene_id)
 	if GlobalSettings.update_best_time(total_time):
-		time.text = "Time: %ss (New Highscore)" % total_time
+		time.set_text(tr("LVTIME") + " %ss" % total_time + tr("NEWHIGHSCORE"))
 	else:
-		time.text = "Time: %ss" % total_time
-	deaths.text = "Deaths: %s" % total_deaths
+		time.set_text(tr("LVTIME") + " %ss" % total_time)
+	deaths.set_text(tr("LVDEATHS") + " %s" % total_deaths)
 	
 	var fire_strenght = GlobalSettings.get_level_light(current_scene_id)
 	if fire_strenght == 0.1:

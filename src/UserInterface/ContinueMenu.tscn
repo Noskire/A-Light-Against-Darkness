@@ -28,7 +28,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Levels" type="Tabs" parent="Bg/TabC"]
+[node name="LEVELS" type="Tabs" parent="Bg/TabC"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -36,7 +36,7 @@ margin_top = 82.0
 margin_right = -5.0
 margin_bottom = -5.0
 
-[node name="MarginC" type="MarginContainer" parent="Bg/TabC/Levels"]
+[node name="MarginC" type="MarginContainer" parent="Bg/TabC/LEVELS"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 25
@@ -47,7 +47,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Grid" type="GridContainer" parent="Bg/TabC/Levels/MarginC"]
+[node name="Grid" type="GridContainer" parent="Bg/TabC/LEVELS/MarginC"]
 margin_left = 25.0
 margin_top = 25.0
 margin_right = 925.0
@@ -56,7 +56,7 @@ theme = ExtResource( 3 )
 custom_constants/vseparation = 20
 columns = 4
 
-[node name="Label" type="Label" parent="Bg/TabC/Levels/MarginC/Grid"]
+[node name="Label" type="Label" parent="Bg/TabC/LEVELS/MarginC/Grid"]
 margin_bottom = 44.0
 
 [node name="X" type="Tabs" parent="Bg/TabC"]

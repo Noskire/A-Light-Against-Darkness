@@ -14,6 +14,11 @@ func toggle_bloom(value):
 	Save.game_data.bloom_on = value
 	Save.save_data()
 
+func toggle_vsync(value):
+	OS.set_use_vsync(value)
+	Save.game_data.vsync_on = value
+	Save.save_data()
+
 func update_brightness(value):
 	emit_signal("brightness_updated", value)
 	Save.game_data.brightness = value
@@ -165,13 +170,29 @@ func update_level(index: int, light: float, time: float, kills: int, deaths: int
 		update_achievement("You Can DO IT!")
 
 func update_achievement(name: String):
-	Save.achievements[name] = true
-	emit_signal("achievement_unlocked", name)
+	if Save.achievements[name] == false:
+		Save.achievements[name] = true
+		var text
+		match name:
+			"One With the Darkness":
+				text = (tr("ACH1NAME"))
+			"One With the Light":
+				text = (tr("ACH2NAME"))
+			"Merciless Wretch!":
+				text = (tr("ACH3NAME"))
+			"Speedrunner":
+				text = (tr("ACH4NAME"))
+			"You Can DO IT!":
+				text = (tr("ACH5NAME"))
+			"Leave no Stone Unturned":
+				text = (tr("ACH6NAME"))
+		emit_signal("achievement_unlocked", text)
 	
-	var miss = 0
-	for i in Save.achievements.keys():
-		if Save.achievements[i] == false:
-			miss += 1
-	if miss == 1:
-		Save.achievements["Leave no Stone Unturned"] = true
-	Save.save_achievements()
+		var miss = 0
+		for i in Save.achievements.keys():
+			if Save.achievements[i] == false:
+				miss += 1
+		if miss == 1:
+			Save.achievements["Leave no Stone Unturned"] = true
+			emit_signal("achievement_unlocked", (tr("ACH6NAME")))
+		Save.save_achievements()

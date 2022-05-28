@@ -1,0 +1,73 @@
+keys,en,pt
+TITLE,A Light Against Darkness,Uma Luz Contra as Trevas
+NEWGAME,New Game,Novo Jogo
+CONTINUE,Continue,Continuar
+ACHIEVEMENTS,Achievements,Conquistas
+SETTINGS,Settings,Opções
+QUIT,Quit,Sair
+CREATOR,Creator:,Criador:
+LEVELS,Levels,Níveis
+LVBESTTIME,Best Time so far:,Melhor tempo:
+LV1NAME,- The Fall,- A Queda
+LV2NAME,- Colony of Bats,- Colônia de Morcegos
+LV3NAME,- Whole Troupe,- Toda a Trupe
+LV4NAME,- Hidden Passage,- Passagem Oculta
+LV5NAME,- Dilemma,- Dilema
+LVTORCHLIGHT,Torch Light:,Luz da Tocha:
+LVTORCHUNLIT,Unlit!,Apagada!
+LVTIME,Time:,Tempo:
+LVDEATHS,Deaths:,Mortes:
+ACHUNLOCK,Achievement Unlocked:,Conquista Liberada:
+ACH1NAME,One With the Darkness,Um com as Trevas
+ACH1DESC,- Complete the game without lit your torch -,- Complete o jogo sem acender sua tocha -
+ACH2NAME,One With the Light,Um com a Luz
+ACH2DESC,- Don't scare away any animals -,- Não assuste nenhum animal -
+ACH3NAME,Merciless Wretch!,Desgraçada Impiedosa!
+ACH3DESC,- What's yours is yours! -,- O que é seu é seu! -
+ACH4NAME,Speedrunner,Speedrunner
+ACH4DESC,- Beat the game in less than 120 seconds -,- Complete o jogo em menos de 120 segundos -
+ACH5NAME,You Can DO IT!,Você Consegue!
+ACH5DESC,- Die 10 times and keep trying -,- Morra 10 vezes e continue tentando -
+ACH6NAME,Leave no Stone Unturned,Não deixe pedra sobre pedra
+ACH6DESC,- Complete it all -,- Complete tudo -
+STVIDEO,Video,Vídeo
+STVDISPLAYMODE,Display Mode,Modo de Exibição
+STVDISPLAYWINDOWED,Windowed,Modo Janela
+STVDISPLAYFULLSCREEN,FullScreen,Tela Cheia
+STVBLOOM,Bloom,Bloom
+STVVSYNC,VSync,VSync
+STVBRIGHTNESS,Brightness,Brilho
+STVLANGUAGE,Language,Idioma
+STVLCHOOSE,Choose a Language,Escolha um Idioma
+STAUDIO,Audio,Áudio
+STAMASTERVOL,Master Volume,Volume Principal
+STAMUSICVOL,Music Volume,Volume da Música
+STASFXVOL,SFX Volume,Volume SFX
+STKEYBIND,Keybind,Controles
+STKRESETST,Reset Settings,Redefinir Teclas
+STKSAVEST,Save Settings,Salvar Teclas
+Up,Up,Cima
+Left,Left,Esquerda
+Down,Down,Baixo
+Right,Right,Direita
+Pause,Pause,Pausar
+Attack,Attack,Atacar
+STKUNASSIGNED,Unassigned,Sem Tecla
+STKPRESSKEY,Press Any Key:,Aperte uma Tecla:
+PAUSED,Paused,Pausado
+YOUDIED,You Died!,Você Perdeu!
+RESUME,Resume,Retomar
+RETRY,Retry,Tentar Novamente
+MAINMENU,Main Menu,Menu Principal
+HINT1,Grab a light!\nThe path is arduous!,Acenda sua Tocha!\nO caminho é árduo!
+HINT2,Don't go!,Não vá!
+HINT3,I told you!,Eu te disse!
+BOSSNAME,PALE WOMAN,MULHER PÁLIDA
+BSPEECH,"Who's coming?\nOh, you have fire... mine ended a long time ago...\nYou will share with me, won't you?","Quem está vindo?\nOh, fogo... o meu acabou há muito tempo...\nVocê vai dividir comigo, não vai?"
+BSPEECHNO,You wretch! Give me!,Sua miserável! Me dê!
+BSPEECHTRAPED,You are trapped!\nRubble blocks the only way out!\nThere's nothing left for you but to wait!,Você está presa!\nEscombros bloqueiam a única saída!\nNão há opções se não esperar!
+BSPEECHYES,"Thank you!\nWho knows how long I've been here in the\ndark, alone... Ah... Maybe we can go out\ntogether, lead the way!","Obrigada!\nQuem sabe há quanto tempo estou aqui no\nescuro, sozinha... Ah... Talvez possamos sair\njuntas, mostre o caminho!"
+BSBTNNO,NO,NÃO
+BSBTNYES,YES,SIM
+CONGRATS,Congratulations!\nYou finished the game!,Parabéns!\nVocê terminou o jogo!
+NEWHIGHSCORE,(New Highscore),(Novo Recorde)

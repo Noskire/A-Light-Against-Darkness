@@ -1,7 +1,7 @@
 extends Enemy
 
 onready var scene_tree = get_tree()
-onready var tile_map = get_parent().get_parent().get_node("TileMap")
+onready var tile_map = get_parent().get_parent().get_node("TileMapx64")
 onready var popup = get_parent().get_parent().get_node("UserInterface/Popup")
 onready var chat_window = get_parent().get_parent().get_node("UserInterface/Popup/Bg/MarginC/VBoxC")
 onready var anim_player: AnimationPlayer = $AnimationPlayer
@@ -33,7 +33,7 @@ func _physics_process(_delta: float) -> void:
 		direction = target_pos.normalized()
 		velocity = (direction * move_velocity)
 		velocity = move_and_slide(velocity)
-		if abs(target_pos.x) < 300 and abs(target_pos.y) < 300:
+		if abs(target_pos.x) < 150 and abs(target_pos.y) < 150:
 			scene_tree.paused = true
 			popup.set_visible(true)
 	elif nice_response:
@@ -152,6 +152,8 @@ func _on_NoBtn_button_up():
 		chat_window.get_node("HBoxB/YesBtn").set_disabled(true)
 		chat = false
 		bad_response = true
+		$CollisionShape2D.set_disabled(false)
+		$AttackArea/CollisionShape2D.set_disabled(false)
 	else:
 		if LIFE > 0:
 			scene_tree.paused = false
@@ -169,12 +171,10 @@ func _on_YesBtn_button_up():
 		chat_window.get_node("HBoxB/NoBtn").set_disabled(true)
 		chat = false
 		LIFE = 0
-		$CollisionShape2D.set_disabled(true)
-		$AttackArea/CollisionShape2D.set_disabled(true)
 		anim_player.play("Idle")
 		nice_response = true
-		tile_map.set_cell(27, 9, 0, false, false, false, Vector2(0, 0))
-		tile_map.set_cell(31, 9, 0, false, false, false, Vector2(0, 0))
+		tile_map.set_cell(15, 12, 0, false, false, false, Vector2(0, 0))
+		tile_map.set_cell(19, 12, 0, false, false, false, Vector2(0, 0))
 	else:
 		scene_tree.paused = false
 		popup.set_visible(false)

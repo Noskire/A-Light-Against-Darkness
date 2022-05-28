@@ -1,9 +1,9 @@
 extends Node
 
-const SAVEFILE = "user://SAVEFILE.save"
-const SAVEKEYS = "user://keybinds.ini"
-const SAVESCORE = "user://SAVESCORE.save"
-const SAVEACHIEV = "user://SAVEACHIEV.save"
+const SAVEFILE = "user://SAVE_FILE.save"
+const SAVEKEYS = "user://key_binds.ini"
+const SAVESCORE = "user://SAVE_SCORE.save"
+const SAVEACHIEV = "user://SAVE_ACHIEV.save"
 
 var standard_keybinds = {
 	"Up": 87,
@@ -32,10 +32,12 @@ func load_data():
 		game_data = {
 			"fullscreen_on": false,
 			"bloom_on": true,
+			"vsync_on": true,
 			"brightness": 1,
 			"master_vol": -10,
 			"music_vol": -20,
-			"sfx_vol": -20
+			"sfx_vol": -20,
+			"language": "en"
 		}
 		save_data()
 	file.open(SAVEFILE, File.READ)
